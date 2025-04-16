@@ -1,0 +1,33 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/images/log_universite_SAIDA.png</file>
+        <file>qml/images/warning.png</file>
+        <file>qml/images/icon1tp-labo-hyd.png</file>
+        <file>qml/images/PointFixe.bmp</file>
+        <file>qml/images/Newton-Raphson.bmp</file>
+        <file>qml/images/secante.bmp</file>
+        <file>qml/images/Dicotomie.bmp</file>
+        <file>qml/images/Fausse-Position.bmp</file>
+        <file>qml/images/Integ.bmp</file>
+        <file>qml/images/fig_Tab1.jpg</file>
+        <file>qml/images/fig_Tab2.jpg</file>
+        <file>qml/images/fig_Tab3.jpg</file>
+        <file>qml/images/logBNM.jpg</file>
+        <file>qml/images/logBNM512x512.jpg</file>
+        <file>qml/images/logBNM256x256.jpg</file>
+        <file>qml/images/Jacobi.png</file>
+        <file>qml/images/PivotsGauss.bmp</file>
+        <file>qml/images/Gauss_Seidel.png</file>
+        <file>qml/images/fig_Tab4.jpg</file>
+        <file>qml/images/Euleur_explicite.bmp</file>
+        <file>qml/images/Rung_Kutta4.bmp</file>
+        <file>qml/images/Kutta_Merson.bmp</file>
+        <file>qml/images/help.png</file>
+        <file>qml/images/PointFixe-SystNonLineaire.bmp</file>
+        <file>qml/images/Newton-Raphson-SystNonLineaire.bmp</file>
+        <file>qml/images/fig_Tab5.jpg</file>
+        <file>qml/images/Newton.bmp</file>
+        <file>qml/images/Lagrange.png</file>
+        <file>qml/images/fig_Tab6.jpg</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/Main.qml</file>
+        <file>qml/Screen_tp1.qml</file>
+        <file>qml/ScopeView.qml</file>
+        <file>qml/Screen_tp2.qml</file>
+        <file>qml/Screen_tp3.qml</file>
+        <file>qml/Plotfx.qml</file>
+        <file>qml/Screen_tp4.qml</file>
+        <file>qml/Screen_tp5.qml</file>
+        <file>qml/Screen_tp6.qml</file>
+    </qresource>
+</RCC>
