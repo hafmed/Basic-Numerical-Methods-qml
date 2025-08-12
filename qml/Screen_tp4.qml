@@ -15,25 +15,26 @@ Rectangle {
 
     property string colorfx_linearsyst: "white"
 
-    function configNbreeqt(index) {
-        comboxNbreeqtcurrentIndex_linearsyst=index
-        if (index===0) {
+    function configNbreeqt(value) {
+        spinBoxNbreeqtcurrentValue_linearsyst=value-2
+        if (value===2) {
             nbreEqts_linearsyst=2
             nbrePtsTab_linearsyst=2
         }
-        if (index===1) {
+        if (value===3) {
             nbreEqts_linearsyst=3
             nbrePtsTab_linearsyst=3
         }
-        if (index===2) {
+        if (value===4) {
             nbreEqts_linearsyst=4
             nbrePtsTab_linearsyst=4
         }
-        if (index===3) {
+        if (value===5) {
             nbreEqts_linearsyst=5
             nbrePtsTab_linearsyst=5
         }
-        // savesettings()
+        ///console.log("nbreEqts_linearsyst="+nbreEqts_linearsyst)
+         ///savesettings()
 
     }
     function fmethodeindex_linearsyst()
@@ -149,23 +150,41 @@ Rectangle {
                 Label {
                     id:label_nbreeqt_linearsyst
                     wrapMode: Text.Wrap
-                    height: comboxNbreeqt_linearsyst.height
+                    height: spinBoxNbreeqt_linearsyst.height
                     verticalAlignment: "AlignVCenter"
                     width: parent.width/4
                     text:"Number of equations in the system"
                 }
-                ComboBox {
-                    id:comboxNbreeqt_linearsyst
-                    width: methodeindex_linearsyst!==0? 65 : parent.width-label_nbreeqt_linearsyst.width-10
-                    model: ["2 equations","3 equations","4 equations","5 equations"]
-                    currentIndex: 0///settings.configNbreeqtcurrentIndex
-                    onCurrentIndexChanged: {
-                        configNbreeqt(currentIndex)
+                SpinBox {
+                    id: spinBoxNbreeqt_linearsyst
+                    width: parent.width-label_nbreeqt_linearsyst.width-5
+                    from: 2
+                    value: settings.nbreEqts_linearsyst
+                    to: 5
+                    editable: true
+                    onValueChanged:{
+                        configNbreeqt(value)
+                        }
+                    property string sufix: qsTr(" equations")
+
+                    validator: RegularExpressionValidator { regularExpression: /\D*(-?\d*\.?\d*)\D*/ }
+
+                    textFromValue: function(value, locale) {
+                        return Number(value).toLocaleString(locale, 'f', 0)+sufix
+                    }
+
+                    valueFromText: function(text, locale) {
+                        let re = /\D*(-?\d*\.?\d*)\D*/
+                        return Number.fromLocaleString(locale, re.exec(text)[1])
                     }
                 }
+            }
+            Row{
+                width:parent.width-5
+                spacing: 3
                 TextField {
                     id:textToler_linearsyst
-                    width: (parent.width-65-label_nbreeqt_linearsyst.width)/2-7
+                    width: parent.width/2
                     visible: methodeindex_linearsyst!==0
                     placeholderText: qsTr("Precision")
                     text: settings.tole_linearsyst
@@ -176,7 +195,7 @@ Rectangle {
                 }
                 TextField {
                     id:textMaxIter_linearsyst
-                    width: (parent.width-65-label_nbreeqt_linearsyst.width)/2-7
+                    width: parent.width/2
                     visible: methodeindex_linearsyst!==0
                     placeholderText: qsTr("Max number of iterations")
                     text: settings.maxiter_linearsyst
@@ -341,7 +360,7 @@ Rectangle {
             StackLayout {
                 id: stackLayoutrectabdata_linearsyst
                 width: parent.width-15
-                currentIndex: comboxNbreeqtcurrentIndex_linearsyst
+                currentIndex: spinBoxNbreeqtcurrentValue_linearsyst
 
                 Rectangle {
                     id:rectabdatan2_linearsyst
@@ -1085,7 +1104,7 @@ Rectangle {
                 text: "Resolve"
                 onClicked: {
                     if (methodeindex_linearsyst==0) {
-                        nbreEqts_linearsyst=comboxNbreeqt_linearsyst.currentIndex+2
+                        nbreEqts_linearsyst=spinBoxNbreeqt_linearsyst.value///comboxNbreeqt_linearsyst.currentIndex+2
                         ///console.log(nbreEqts_linearsyst)
                         ///console.log(tabArrayxiyidatan4_linearsyst)
                         if (nbreEqts_linearsyst==2) {
@@ -1110,7 +1129,7 @@ Rectangle {
                         tabArrayxo_linearsyst[i] = new Array(3);
                     }
                     if (methodeindex_linearsyst==1) {
-                        nbreEqts_linearsyst=comboxNbreeqt_linearsyst.currentIndex+2
+                        nbreEqts_linearsyst=spinBoxNbreeqt_linearsyst.value///comboxNbreeqt_linearsyst.currentIndex+2
                         tabArrayxo_linearsyst[0][0]=x01_linearsyst
                         tabArrayxo_linearsyst[0][1]=x02_linearsyst
                         tabArrayxo_linearsyst[0][2]=x03_linearsyst
@@ -1135,7 +1154,7 @@ Rectangle {
                         }
                     }
                     if (methodeindex_linearsyst==2) {
-                        nbreEqts_linearsyst=comboxNbreeqt_linearsyst.currentIndex+2
+                        nbreEqts_linearsyst=spinBoxNbreeqt_linearsyst.value///comboxNbreeqt_linearsyst.currentIndex+2
                         tabArrayxo_linearsyst[0][0]=x01_linearsyst
                         tabArrayxo_linearsyst[0][1]=x02_linearsyst
                         tabArrayxo_linearsyst[0][2]=x03_linearsyst
@@ -1164,7 +1183,6 @@ Rectangle {
 
                 }
             }
-
             Row {
                 width: parent.width
                 spacing: 0
@@ -1175,7 +1193,6 @@ Rectangle {
                 }
                 Label {
                     id:label2_Calcul_liearsys
-                    width: label1_Calcul_tp6.text.width
                     text: methodeindex_linearsyst==0? "The equivalent upper triangular matrix":"Results"
                     anchors.fill: parent.center
                 }
@@ -1185,7 +1202,26 @@ Rectangle {
                     orientation: Qt.Horizontal
                 }
             }
-
+            Row {
+                width: parent.width
+                visible: methodeindex_linearsyst!==0
+                spacing: 0
+                ToolSeparator {
+                    height: 25
+                    width: (parent.width-label5_Calcul_liearsys.width)/2
+                    orientation: Qt.Horizontal
+                }
+                Label {
+                    id:label5_Calcul_liearsys
+                    text: "(MaxErreur=max(abs(x(i,k)-x(i,k-1))) ; k: iteration number)"
+                    anchors.fill: parent.center
+                }
+                ToolSeparator {
+                    height: 25
+                    width: (parent.width-label5_Calcul_liearsys.width)/2
+                    orientation: Qt.Horizontal
+                }
+            }
             StackLayout {
                 id: stackLayoutrectabMatriTriaSupResultsGSJaco_linearsyst
                 width: parent.width-15
@@ -1194,7 +1230,7 @@ Rectangle {
                 StackLayout {
                     id: stackLayoutrectabMatriTriaSup_linearsyst
                     width: parent.width
-                    currentIndex: comboxNbreeqtcurrentIndex_linearsyst
+                    currentIndex: spinBoxNbreeqtcurrentValue_linearsyst
 
                     Rectangle {
                         id:rectabMatriTriaSupn2_linearsyst
@@ -1811,7 +1847,7 @@ Rectangle {
                 StackLayout {
                     id: stackLayoutrectabResultsGSJaco_linearsyst
                     width: parent.width
-                    currentIndex: comboxNbreeqtcurrentIndex_linearsyst
+                    currentIndex: spinBoxNbreeqtcurrentValue_linearsyst
 
                     Rectangle {
                         id:rectabResultsGSJacon2_linearsyst
@@ -2120,7 +2156,6 @@ Rectangle {
                 selectByMouse: true
                 renderType: Text.NativeRendering
                 placeholderText: qsTr("Results")
-                ///text: settings.nbrePtsfx_linearsyst
             }
         }
     }
@@ -2128,7 +2163,6 @@ Rectangle {
     Component.onCompleted: {
         var i
         radiobuttonMetho1_linearsyst.checked=true
-        nbreEqts_linearsyst=2
         function hafparseFloat(x){
             if (isNaN(parseFloat(x))){
                 return "..."

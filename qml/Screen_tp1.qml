@@ -108,7 +108,7 @@ Rectangle {
                 }
                 Image {
                     id: image1help_nonlineareqt
-                    width: 15
+                    width: 29
                     height: label1_Calcul_tp6.height
                     smooth: true
                     fillMode: Image.PreserveAspectFit

@@ -108,7 +108,7 @@ Item {
         property real nbrePts_plot
         property real dx_plot
         ///--------linearsyst--------------
-        // property real nbreEqts_linearsyst
+        property real nbreEqts_linearsyst
         // property real nbrePtsTab_linearsyst
         property real maxiter_linearsyst
         property real tole_linearsyst
@@ -146,7 +146,7 @@ Item {
 
 
     }
-    property string appVer:"1.5.7"
+    property string appVer:"1.6.7"
     ///property bool firstuseofapp
     property int scopeViewcount:scopeView.count
     property int tabBarcurrentIndex: 0
@@ -235,7 +235,7 @@ Item {
     property var tabArrayxiyidatan4_linearsyst
     property var tabArrayxiyidatan5_linearsyst
 
-    property int comboxNbreeqtcurrentIndex_linearsyst
+    property int spinBoxNbreeqtcurrentValue_linearsyst
 
     property real x01_linearsyst
     property real x02_linearsyst
@@ -318,6 +318,7 @@ Item {
         settings.nbrePts_plot=nbrePts_plot
         settings.dx_plot=dx_plot
         ///-----------linearsyst------------
+        settings.nbreEqts_linearsyst=nbreEqts_linearsyst
         settings.maxiter_linearsyst=maxiter_linearsyst
         settings.tole_linearsyst=tole_linearsyst
         settings.tabArrayxiyidatan2_linearsyst=tabArrayxiyidatan2_linearsyst
@@ -398,6 +399,7 @@ Item {
         nbrePts_plot=settings.nbrePts_plot
         dx_plot=settings.dx_plot
         ///-----------linearsyst------------
+        nbreEqts_linearsyst=settings.nbreEqts_linearsyst
         maxiter_linearsyst=settings.maxiter_linearsyst
         tole_linearsyst=settings.tole_linearsyst
         tabArrayxiyidatan2_linearsyst=settings.tabArrayxiyidatan2_linearsyst
@@ -471,6 +473,7 @@ Item {
         nbrePts_plot=101
         dx_plot=0.1
         ///------------linearsyst----------------
+        nbreEqts_linearsyst=2
         maxiter_linearsyst=100
         tole_linearsyst=1e-7
         tabArrayxiyidatan2_linearsyst= [[3, 1, -1],[1, 5, 2]]
@@ -752,7 +755,7 @@ Item {
             // ... not first run
             loadsettings();
         }
-        ///scopeView.currentIndex=5; ///temp
+        ///scopeView.currentIndex=3; ///temp
     }
     Component.onDestruction: {
         savesettings();

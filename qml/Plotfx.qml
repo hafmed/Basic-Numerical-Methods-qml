@@ -11,7 +11,7 @@ Dialog {
     title: "Plot y=f(x)"
     anchors.centerIn: Overlay.overlay
     width:app.width
-    height: app.height/5*4
+    height: app.height/5*4.9
     Material.theme: Material.Dark
     Material.accent: Material.Pink
 
@@ -289,7 +289,7 @@ Dialog {
 
                                             axisX_plot.min = Math.floor(minixi_plot-Math.abs(0.1*minixi_plot));
                                             axisX_plot.max = Math.ceil(maxxi_plot+Math.abs(0.1*maxxi_plot));
-                                            axisY_plot.max = Math.ceil(maxyi_plot+Math.abs(0.1*maxyi_plot));
+                                            axisY_plot.max = Math.max(Math.ceil(maxyi_plot+Math.abs(0.1*maxyi_plot)),axisY_plot.max*0.1);
                                             axisY_plot.min = Math.min(Math.floor(miniyi_plot-Math.abs(0.1*miniyi_plot)),-axisY_plot.max*0.1);
                                             ///
                                         }

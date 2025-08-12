@@ -31,7 +31,7 @@ Rectangle {
 
     function configNbrepts() {
         textAffichageResultats_polynoapproxi.text=""
-        if (comboxNbrepts_polynoapproxi.currentIndex===0) {
+        if (spinBoxNbrepts_polynoapproxi.value===2) {
             if (radiobutton1ischecked_polynoapproxi){
                 columnWidths=[125,125,0,0,0,0,0,0,0,0,0]
             }else{
@@ -44,7 +44,7 @@ Rectangle {
             verticalHeaderdata_polynoapproxi.model=["Point(0)","Point(1)"]
             nbrePts_polynoapproxi=2
         }
-        if (comboxNbrepts_polynoapproxi.currentIndex===1) {
+        if (spinBoxNbrepts_polynoapproxi.value===3) {
             if (radiobutton1ischecked_polynoapproxi){
                 columnWidths=[125,125,0,0,0,0,0,0,0,0,0]
             }else{
@@ -57,7 +57,7 @@ Rectangle {
             verticalHeaderdata_polynoapproxi.model=["Point(0)","Point(1)","Point(2)"]
             nbrePts_polynoapproxi=3
         }
-        if (comboxNbrepts_polynoapproxi.currentIndex===2) {
+        if (spinBoxNbrepts_polynoapproxi.value===4) {
             if (radiobutton1ischecked_polynoapproxi){
                 columnWidths=[125,125,0,0,0,0,0,0,0,0,0]
             }else{
@@ -70,7 +70,7 @@ Rectangle {
             verticalHeaderdata_polynoapproxi.model=["Point(0)","Point(1)","Point(2)","Point(3)"]
             nbrePts_polynoapproxi=4
         }
-        if (comboxNbrepts_polynoapproxi.currentIndex===3) {
+        if (spinBoxNbrepts_polynoapproxi.value===5) {
             if (radiobutton1ischecked_polynoapproxi){
                 columnWidths=[125,125,0,0,0,0,0,0,0,0,0]
             }else{
@@ -83,7 +83,7 @@ Rectangle {
             verticalHeaderdata_polynoapproxi.model=["Point(0)","Point(1)","Point(2)","Point(3)","Point(4)"]
             nbrePts_polynoapproxi=5
         }
-        if (comboxNbrepts_polynoapproxi.currentIndex===4) {
+        if (spinBoxNbrepts_polynoapproxi.value===6) {
             if (radiobutton1ischecked_polynoapproxi){
                 columnWidths=[125,125,0,0,0,0,0,0,0,0,0]
             }else{
@@ -96,7 +96,7 @@ Rectangle {
             verticalHeaderdata_polynoapproxi.model=["Point(0)","Point(1)","Point(2)","Point(3)","Point(4)","Point(5)"]
             nbrePts_polynoapproxi=6
         }
-        if (comboxNbrepts_polynoapproxi.currentIndex===5) {
+        if (spinBoxNbrepts_polynoapproxi.value===7) {
             if (radiobutton1ischecked_polynoapproxi){
                 columnWidths=[125,125,0,0,0,0,0,0,0,0,0]
             }else{
@@ -109,7 +109,7 @@ Rectangle {
             verticalHeaderdata_polynoapproxi.model=["Point(0)","Point(1)","Point(2)","Point(3)","Point(4)","Point(5)","Point(6)"]
             nbrePts_polynoapproxi=7
         }
-        if (comboxNbrepts_polynoapproxi.currentIndex===6) {
+        if (spinBoxNbrepts_polynoapproxi.value===8) {
             if (radiobutton1ischecked_polynoapproxi){
                 columnWidths=[125,125,0,0,0,0,0,0,0,0,0]
             }else{
@@ -122,7 +122,7 @@ Rectangle {
             verticalHeaderdata_polynoapproxi.model=["Point(0)","Point(1)","Point(2)","Point(3)","Point(4)","Point(5)","Point(6)","Point(7)"]
             nbrePts_polynoapproxi=8
         }
-        if (comboxNbrepts_polynoapproxi.currentIndex===7) {
+        if (spinBoxNbrepts_polynoapproxi.value===9) {
             if (radiobutton1ischecked_polynoapproxi){
                 columnWidths=[125,125,0,0,0,0,0,0,0,0,0]
             }else{
@@ -135,7 +135,7 @@ Rectangle {
             verticalHeaderdata_polynoapproxi.model=["Point(0)","Point(1)","Point(2)","Point(3)","Point(4)","Point(5)","Point(6)","Point(7)","Point(8)"]
             nbrePts_polynoapproxi=9
         }
-        if (comboxNbrepts_polynoapproxi.currentIndex===8) {
+        if (spinBoxNbrepts_polynoapproxi.value===10) {
             if (radiobutton1ischecked_polynoapproxi){
                 columnWidths=[125,125,0,0,0,0,0,0,0,0,0]
             }else{
@@ -244,18 +244,32 @@ Rectangle {
                 Label {
                     id:label_Nbrepts_polynoapproxi
                     wrapMode: Text.Wrap
-                    height: comboxNbrepts_polynoapproxi.height
+                    height: spinBoxNbrepts_polynoapproxi.height
                     verticalAlignment: "AlignVCenter"
                     text:"Number of points: "
                 }
-                ComboBox {
-                    id:comboxNbrepts_polynoapproxi
+                SpinBox {
+                    id: spinBoxNbrepts_polynoapproxi
                     width: parent.width-label_Nbrepts_polynoapproxi.implicitWidth-10
-                    model: ["2 Points","3 Points","4 Points","5 Points","6 Points","7 Points","8 Points","9 Points","10 Points"]
-                    currentIndex: settings.configNbreptscurrentIndex
-                    onCurrentIndexChanged: {
-                        configNbreptscurrentIndex=comboxNbrepts_polynoapproxi.currentIndex
+                    from: 2
+                    value: settings.configNbreptscurrentIndex
+                    to: 10
+                    editable: true
+                    onValueChanged:{
+                        configNbreptscurrentIndex=spinBoxNbrepts_polynoapproxi.value
                         configNbrepts()
+                        }
+                    property string sufix: qsTr(" Points")
+
+                    validator: RegularExpressionValidator { regularExpression: /\D*(-?\d*\.?\d*)\D*/ }
+
+                    textFromValue: function(value, locale) {
+                        return Number(value).toLocaleString(locale, 'f', 0)+sufix
+                    }
+
+                    valueFromText: function(text, locale) {
+                        let re = /\D*(-?\d*\.?\d*)\D*/
+                        return Number.fromLocaleString(locale, re.exec(text)[1])
                     }
                 }
             }
@@ -346,7 +360,7 @@ Rectangle {
                     anchors.top: parent.top
                     syncView: tabviewxiyidata_polynoapproxi
                     clip: true
-                    model: ["x(i)","y(i)","f[x0,x1]","f[x0,x1,x2]","f[x0,x1,x3]","f[x0,x1,x2,x3,x4]","f[x0,x1,x2,x3,x4,x5]","f[x0,x1,x2,x3,x4,x5,x6]","f[x0,x1,x2,x3,x4,x5,x6,x7]","f[x0,x1,x2,x3,x4,x5,x6,x7,x8]","f[x0,x1,x2,x3,x4,x5,x6,x7,x8,x9]"]
+                    model: ["x(i)","y(i)","f[x0,x1]","f[x0,x1,x2]","f[x0,x1,x2,x3]","f[x0,x1,x2,x3,x4]","f[x0,x1,x2,x3,x4,x5]","f[x0,x1,x2,x3,x4,x5,x6]","f[x0,x1,x2,x3,x4,x5,x6,x7]","f[x0,x1,x2,x3,x4,x5,x6,x7,x8]","f[x0,x1,x2,x3,x4,x5,x6,x7,x8,x9]"]
                 }
                 VerticalHeaderView {
                     id: verticalHeaderdata_polynoapproxi

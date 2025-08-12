@@ -20,6 +20,7 @@ Rectangle {
         if (radiobutton1ischecked_inteqt) methodeindex_inteqt= 0
         if (radiobutton2ischecked_inteqt) methodeindex_inteqt= 1
         if (radiobutton3ischecked_inteqt) methodeindex_inteqt= 2
+        CalculHaf.nselonmethodechoisie(spinBoxNbrePtsfx_inteqt.value, methodeindex_inteqt)
     }
     Connections {
         target: CalculHaf
@@ -44,6 +45,14 @@ Rectangle {
         }
         function onRequestSelectEndtable_inteqt(){
             tableVerticalBar_inteqt.setPosition(1 - tableVerticalBar_inteqt.size)
+        }
+        function onRequestndxint(n,stepn,nmini){
+            spinBoxNbrePtsfx_inteqt.value=n
+            spinBoxNbrePtsfx_inteqt.stepSize=stepn
+            spinBoxNbrePtsfx_inteqt.from=nmini
+            spinBoxNbrePtsTab_inteqt.value=n
+            spinBoxNbrePtsTab_inteqt.stepSize=stepn
+            spinBoxNbrePtsTab_inteqt.from=nmini
         }
     }
     Dialog {
@@ -110,28 +119,27 @@ Rectangle {
                 Row {
                     id:rowgroupbutton_inteqt
                     width:  parent.width
-                    spacing: 10
+                    spacing: 1
                     RadioButton {
                         id:radiobuttontab_inteqt
                         checked: true
-                        text: qsTr("Table (x(i) and y(i)):")
+                        text: qsTr("Table (x(i),y(i)):")
                         ButtonGroup.group: buttongroup1_inteqt
-                        onCheckedChanged: radiobuttontableischecked_inteqt=radiobuttontab_inteqt.checked
+                        onCheckedChanged:{
+                            radiobuttontableischecked_inteqt=radiobuttontab_inteqt.checked
+                        }
                     }
-                    TextField {
-                        id:textNbrePtsTab_inteqt
-                        width: parent.width-radiobuttontab_inteqt.width-10
-                        placeholderText: qsTr("Number of points")
-                        text: settings.nbrePtsTab_inteqt
-                        inputMethodHints: Qt.ImhDigitsOnly
-                        // onTextChanged: {if (textNbrePtsTab_inteqt.text==="nan" || textNbrePtsTab_inteqt.text==="NaN") textNbrePtsTab_inteqt.text=nbrePtsTab_inteqt ;
-                        //     nbrePtsTab_inteqt=textNbrePtsTab_inteqt.text;
-                        // }
-                        ///onEditingFinished:
-                        onTextChanged:{
-                            textNbrePtsfx_inteqt.text=textNbrePtsTab_inteqt.text
+                    SpinBox {
+                        id: spinBoxNbrePtsTab_inteqt
+                        width: parent.width-radiobuttontab_inteqt.implicitWidth
+                        from: 2
+                        value: settings.nbrePtsTab_inteqt
+                        to: 100
+                        editable: true
+                        onValueChanged:{
+                            spinBoxNbrePtsfx_inteqt.value=spinBoxNbrePtsTab_inteqt.value
                             for (let i = 0; i < 10 ; i++) {
-                                nbrePtsTab_inteqt=textNbrePtsTab_inteqt.text;
+                                nbrePtsTab_inteqt=spinBoxNbrePtsTab_inteqt.value;
                                 if (nbrePtsTab_inteqt!=="" && nbrePtsTab_inteqt!==0 ){
                                     if (nbrePtsTab_inteqt > tableModel1_inteqt.rowCount) {
                                         for (let i = 0; i < Math.abs(nbrePtsTab_inteqt-tableModel1_inteqt.rowCount) ; i++) {
@@ -146,13 +154,26 @@ Rectangle {
 
                             tabviewxiyiIj_inteqt.savexiyiIjtableModel1_inteqt()
                             tabviewxiyiIj_inteqt.fullxitableModel1_inteqt()
+
+                        }
+                        property string prefix: qsTr("Number of points=")
+
+                        validator: RegularExpressionValidator { regularExpression: /\D*(-?\d*\.?\d*)\D*/ }
+
+                        textFromValue: function(value, locale) {
+                            return prefix + Number(value).toLocaleString(locale, 'f', 0)
+                        }
+
+                        valueFromText: function(text, locale) {
+                            let re = /\D*(-?\d*\.?\d*)\D*/
+                            return Number.fromLocaleString(locale, re.exec(text)[1])
                         }
                     }
                 }
 
                 Rectangle {
                     id:rectabview1_inteqt
-                    width: parent.width
+                    width: parent.width-10
                     height: 250
                     color: "transparent"
                     HorizontalHeaderView {
@@ -181,8 +202,8 @@ Rectangle {
                         rowSpacing: 1
                         ScrollBar.vertical: ScrollBar {
                             id: tableVerticalBar_inteqt;
-                            active:true
-                            policy:ScrollBar.AlwaysOn
+                            active:tabviewxiyiIj_inteqt.implicitHeight>rectabview1_inteqt.implicitHeight?
+                                       policy:ScrollBar.AlwaysOn
                         }
                         boundsBehavior: Flickable.StopAtBounds
                         model: TableModel {
@@ -195,7 +216,7 @@ Rectangle {
                             tableModel1_inteqt.clear()
                             for(var i=0; i<nbrePtsTab_inteqt; i++)
                             {
-                                tableModel1_inteqt.appendRow({xi:a_inteqt+i*dx_inteqt,yi:"",Ij:""})
+                                tableModel1_inteqt.appendRow({xi:parseFloat(a_inteqt+i*dx_inteqt).toFixed(3),yi:"",Ij:""})
                             }
                         }
                         function savexiyiIjtableModel1_inteqt(){
@@ -406,22 +427,36 @@ Rectangle {
                     width: parent.width-column_buttongroup2_inteqt.width-3
                     anchors.margins: 10
                     spacing: 10
-                    TextField {
-                        id:textNbrePtsfx_inteqt
+                    SpinBox {
+                        id: spinBoxNbrePtsfx_inteqt
                         width: parent.width
-                        placeholderText: qsTr("Number of points")
-                        text: settings.nbrePtsfx_inteqt
-                        inputMethodHints: Qt.ImhDigitsOnly
-                        onTextChanged: {if (textNbrePtsfx_inteqt.text==="nan" || textNbrePtsfx_inteqt.text==="NaN") textNbrePtsfx_inteqt.text=nbrePtsfx_inteqt ;
-                            nbrePtsfx_inteqt=textNbrePtsfx_inteqt.text;
+                        from: 2
+                        value: settings.nbrePtsfx_inteqt
+                        to: 100
+                        editable: true
+                        onValueChanged:{
+                            if (spinBoxNbrePtsfx_inteqt.value==="nan" || spinBoxNbrePtsfx_inteqt.value==="NaN") textNbrePtsfx_inteqt.text=nbrePtsfx_inteqt ;
+                            nbrePtsfx_inteqt=spinBoxNbrePtsfx_inteqt.value;
                             dx_inteqt=(b_inteqt-a_inteqt)/(nbrePtsfx_inteqt-1);
                             textdx_inteqt.text=parseFloat(dx_inteqt).toFixed(3);
+                        }
+                        property string prefix: qsTr("Number of points=")
+
+                        validator: RegularExpressionValidator { regularExpression: /\D*(-?\d*\.?\d*)\D*/ }
+
+                        textFromValue: function(value, locale) {
+                            return prefix + Number(value).toLocaleString(locale, 'f', 0)
+                        }
+
+                        valueFromText: function(text, locale) {
+                            let re = /\D*(-?\d*\.?\d*)\D*/
+                            return Number.fromLocaleString(locale, re.exec(text)[1])
                         }
                     }
                     Image {
                         id: image1inteqt
                         width: parent.width
-                        height: textNbrePtsfx_inteqt.height
+                        height: spinBoxNbrePtsfx_inteqt.height
                         smooth: true
                         fillMode: Image.PreserveAspectFit
                         source: "images/Integ.bmp"
@@ -432,7 +467,7 @@ Rectangle {
                 width: parent.width
                 text: "Calculate the integral"
                 onClicked: {
-                    if (checkBoxremplirtabischecked_inteqt && radiobuttonfxischecked_inteqt) textNbrePtsTab_inteqt.text=nbrePtsfx_inteqt
+                    if (checkBoxremplirtabischecked_inteqt && radiobuttonfxischecked_inteqt) spinBoxNbrePtsTab_inteqt.value=nbrePtsfx_inteqt
 
                     tabviewxiyiIj_inteqt.savexiyiIjtableModel1_inteqt()
                     if (radiobutton1ischecked_inteqt){
