@@ -52,6 +52,8 @@ public:
     Q_INVOKABLE QString textChangedinfunctiondf1xyNR(QString df1xyNR_nonlinearsyst);
     Q_INVOKABLE QString textChangedinfunctiondf2xyNR(QString df2xyNR_nonlinearsyst);
 
+    Q_INVOKABLE void nselonmethodechoisie(int n, int methodeindex_inteqt);
+
     std::size_t array_size=1000000;
     double* y = new double[array_size];
     double* x = new double[array_size];
@@ -190,6 +192,8 @@ signals:
     void requesttextAffichageResultats_polynoapproxi(QString text);
     void request_polynoapproxi(QString xi,QString yi,QString ,QString ,QString ,QString ,QString ,QString ,QString ,QString ,QString );
     void requestDialog_polynoapproxi(QString title,QString error);
+
+    void requestndxint(int n,float stepn,int nmini);
 
 public slots:
     ///void generateData(int type, int rowCount, int colCount);

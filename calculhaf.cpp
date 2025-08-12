@@ -870,13 +870,13 @@ void CalculHaf::hafafficherIntegration(QString fxintegrale,QVariantList tabArray
             x[i]=tabArrayxiyi_inteqt[i].toList().at(0).toFloat();
             y[i]=tabArrayxiyi_inteqt[i].toList().at(1).toFloat();
         }
-        for(i=0; i<n; i++)
-        {
-            qDebug() << "x[i]="<< "^\n"
-                     << x[i] << "\n\n";
-            qDebug() << "y[i]="<< "^\n"
-                     << y[i] << "\n\n";
-        }
+        // for(i=0; i<n; i++)
+        // {
+        //     qDebug() << "x[i]="<< "^\n"
+        //              << x[i] << "\n\n";
+        //     qDebug() << "y[i]="<< "^\n"
+        //              << y[i] << "\n\n";
+        // }
     }
 
     if (method==0){
@@ -889,7 +889,7 @@ void CalculHaf::hafafficherIntegration(QString fxintegrale,QVariantList tabArray
                 textAffichageResultats_inteqt="The integral (according to the table above) between "+QString::number(a)+" and "+QString::number(b)+" with a step of "+QString::number(dx)+ " by the trapezoidal method is equal to "+QString::number(I[i]);
             }
         }
-        if (fullTableView){
+        if ((fullTableView && usefx) || !usefx){
             emit requestCleartable_inteqt();
             for (i=0; i<n; i++)
             {
@@ -918,7 +918,7 @@ void CalculHaf::hafafficherIntegration(QString fxintegrale,QVariantList tabArray
         // {
         //     qDebug()<<"k="<<k<<" et I[k]="<<I[k];
         // }
-        if (fullTableView){
+        if ((fullTableView && usefx) || !usefx){
             emit requestCleartable_inteqt();
             for (i=0; i<n; i++)
             {
@@ -954,7 +954,7 @@ void CalculHaf::hafafficherIntegration(QString fxintegrale,QVariantList tabArray
         // {
         //     qDebug()<<"k="<<k<<" et I[k]="<<I[k];
         // }
-        if (fullTableView){
+        if ((fullTableView && usefx) || !usefx){
             emit requestCleartable_inteqt();
             for (i=0; i<n; i++)
             {
@@ -1676,6 +1676,50 @@ QString CalculHaf::number_to_qstring_HAF(double xi,int i, int j)
         return emptyqstring;
     }else{
         return QString::number(xi);
+    }
+}
+void CalculHaf::nselonmethodechoisie(int n, int methodeindex_inteqt)
+{
+    const int m=99999; //le nbre max de lines dans le tableau x(i) et y(i).
+    ///n=spinBox_nbre_pts_fx->text().toInt();
+    if (methodeindex_inteqt==2)
+    {
+        int ksimp38[m];ksimp38[0]=4;
+        for (i=1; i<m ;i++)
+        {
+            ksimp38[i]=3*i+4;
+            if (n<=ksimp38[i])
+            {
+                n=ksimp38[i];
+                goto finboucle1;
+            }
+        }
+    finboucle1:;
+        emit requestndxint(n,3,4);
+        ///spinBox_nbre_pts_fx->setValue(n);
+        ///spinBox_nbre_pts_fx->setSingleStep(3);
+    }
+    if (methodeindex_inteqt==1)
+    {
+        int ksimp13[m];ksimp13[0]=3;
+        for (i=1; i<m ;i++)
+        {
+            ksimp13[i]=2*i+1;
+            if (n<=ksimp13[i])
+            {
+                n=ksimp13[i];
+                goto finboucle2;
+            }
+        }
+    finboucle2:;
+        emit requestndxint(n,2,3);
+        ///spinBox_nbre_pts_fx->setValue(n);
+        ///spinBox_nbre_pts_fx->setSingleStep(2);
+    }
+    if (methodeindex_inteqt==0)
+    {
+        emit requestndxint(n,1,2);
+        ///spinBox_nbre_pts_fx->setSingleStep(1);
     }
 }
 

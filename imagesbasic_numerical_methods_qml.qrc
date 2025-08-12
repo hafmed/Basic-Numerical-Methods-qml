@@ -2,7 +2,6 @@
     <qresource prefix="/">
         <file>qml/images/log_universite_SAIDA.png</file>
         <file>qml/images/warning.png</file>
-        <file>qml/images/icon1tp-labo-hyd.png</file>
         <file>qml/images/PointFixe.bmp</file>
         <file>qml/images/Newton-Raphson.bmp</file>
         <file>qml/images/secante.bmp</file>

@@ -1,0 +1,20 @@
+    # Example Flatpak manifest for a simple Qt application
+    app-id: org.flatpak.appbasic_numerical_methods_qml
+    branch: Release
+    runtime: org.kde.Platform
+    sdk: org.kde.Sdk
+    separate-locales: false
+    runtime-version: "6.9" # Or the appropriate Qt version
+    sdk: org.kde.Sdk
+    command: appbasic_numerical_methods_qml
+    finish-args:
+        - --share=ipc
+        - --socket=fallback-x11
+        - --socket=wayland
+        - --device=dri
+    modules:
+      - name: appbasic_numerical_methods_qml
+        buildsystem: cmake # Or cmake, meson, etc. depending on your build system
+        sources:
+          - type: dir
+            path: /home/hafmed/Documents/24-25/basic_numerical_methods_qml/ # Path to your application source code
