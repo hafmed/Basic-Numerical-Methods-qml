@@ -15,6 +15,12 @@ int main(int argc, char *argv[])
     // Qt Charts uses Qt Graphics View Framework for drawing, therefore QApplication must be used.
     QApplication app(argc, argv);
 
+    QApplication::setOrganizationDomain(QStringLiteral("hafsoftdz"));
+    QApplication::setOrganizationName(QStringLiteral("hafsoftdz"));
+    QApplication::setApplicationName(QStringLiteral("basic_numerical_methods"));
+
+    QGuiApplication::setDesktopFileName(QStringLiteral("org.flatpak.basic_numerical_methods"));
+
     // qputenv("QT_QUICK_CONTROLS_STYLE", QByteArray("Material"));
     // qputenv("QT_QUICK_CONTROLS_MATERIAL_THEME", QByteArray("Dark"));
     // qputenv("QT_QUICK_CONTROLS_MATERIAL_ACCENT", QByteArray("Orange"));

@@ -9,5 +9,7 @@
         <file>qml/Screen_tp4.qml</file>
         <file>qml/Screen_tp5.qml</file>
         <file>qml/Screen_tp6.qml</file>
+        <file>org.flatpak.appbasic_numerical_methods_qml.metainfo.xml</file>
+        <file>org.flatpak.appbasic_numerical_methods_qml.desktop</file>
     </qresource>
 </RCC>

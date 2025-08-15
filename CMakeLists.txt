@@ -1,9 +1,14 @@
 #flatpak install repo  org.flatpak.appbasic_numerical_methods_qml
-#flatpak-builder --force-clean --user --install-deps-#from=flathub --repo=repo --install builddir #org.flatpak.appbasic_numerical_methods_qml.yaml
+#flatpak-builder --force-clean --user --install-deps-from=flathub --repo=repo --install builddir #org.flatpak.appbasic_numerical_methods_qml.yaml
 
 #flatpak remotes
 #flatpak run org.flatpak.appbasic_numerical_methods_qml
 
+# flatpak list --app
+
+# flatpak uninstall org.flatpak.appbasic_numerical_methods_qml
+
+#project(basic_numerical_methods_qml)
 
 cmake_minimum_required(VERSION 3.16)
 
@@ -61,3 +66,5 @@ install(TARGETS appbasic_numerical_methods_qml
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
+
+install(FILES ${PROJECT_SOURCE_DIR}/org.flatpak.appbasic_numerical_methods_qml.metainfo.xml DESTINATION $ENV{HOME}/.local/app/share/metainfo/org.flatpak.appbasic_numerical_methods_qml.metainfo.xml)
