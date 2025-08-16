@@ -12,7 +12,7 @@
 
 cmake_minimum_required(VERSION 3.16)
 
-project(basic_numerical_methods_qml VERSION 1.6.7 LANGUAGES CXX)
+project(basic_numerical_methods_qml VERSION 1.6.9 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -58,6 +58,7 @@ qt_add_qml_module(appbasic_numerical_methods_qml
     SOURCES calculhaf.h calculhaf.cpp
     SOURCES fparser.cc fpoptimizer.cc fpconfig.hh fparser.hh
     SOURCES
+    RESOURCES io.github.hafmed.Basic-Numerical-Methods-qml.desktop io.github.hafmed.Basic-Numerical-Methods-qml.metainfo.xml io.github.hafmed.Basic-Numerical-Methods-qml.yaml appbasic_numerical_methods_qml_256.png appbasic_numerical_methods_qml.png
 )
 
 include(GNUInstallDirs)
@@ -67,4 +68,4 @@ install(TARGETS appbasic_numerical_methods_qml
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 
-install(FILES ${PROJECT_SOURCE_DIR}/org.flatpak.appbasic_numerical_methods_qml.metainfo.xml DESTINATION $ENV{HOME}/.local/app/share/metainfo/org.flatpak.appbasic_numerical_methods_qml.metainfo.xml)
+install(FILES ${PROJECT_SOURCE_DIR}/io.github.hafmed.Basic-Numerical-Methods-qml.metainfo.xml DESTINATION $ENV{HOME}/.local/app/share/metainfo/io.github.hafmed.Basic-Numerical-Methods-qml.metainfo.xml)
