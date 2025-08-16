@@ -146,7 +146,7 @@ Item {
 
 
     }
-    property string appVer:"1.6.7"
+    property string appVer:"1.6.9"
     ///property bool firstuseofapp
     property int scopeViewcount:scopeView.count
     property int tabBarcurrentIndex: 0
