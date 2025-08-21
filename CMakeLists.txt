@@ -68,10 +68,10 @@ install(TARGETS appbasic_numerical_methods_qml
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 
-install(PROGRAMS io.github.hafmed.Basic-Numerical-Methods-qml.desktop
-        DESTINATION ${KDE_INSTALL_APPDIR})
-install(FILES io.github.hafmed.Basic-Numerical-Methods-qml.metainfo.xml
-        DESTINATION ${KDE_INSTALL_METAINFODIR})
-install(FILES io.github.hafmed.Basic-Numerical-Methods-qml.svg
-        DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps)
+install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/io.github.hafmed.Basic-Numerical-Methods-qml.desktop"
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/applications")
+install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/io.github.hafmed.Basic-Numerical-Methods-qml.metainfo.xml"
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/metainfo")
+install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/io.github.hafmed.Basic-Numerical-Methods-qml.png"
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/256x256/apps")
 
