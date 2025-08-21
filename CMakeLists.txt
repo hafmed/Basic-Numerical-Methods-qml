@@ -69,3 +69,8 @@ install(TARGETS appbasic_numerical_methods_qml
 )
 
 install(FILES ${PROJECT_SOURCE_DIR}/io.github.hafmed.Basic-Numerical-Methods-qml.metainfo.xml DESTINATION $ENV{HOME}/.local/app/share/metainfo/io.github.hafmed.Basic-Numerical-Methods-qml.metainfo.xml)
+
+install(FILES ${PROJECT_SOURCE_DIR}/io.github.hafmed.Basic-Numerical-Methods-qml.metainfo.xml DESTINATION /app/share/metainfo/io.github.hafmed.Basic-Numerical-Methods-qml.metainfo.xml)
+install(FILES ${PROJECT_SOURCE_DIR}/io.github.hafmed.Basic-Numerical-Methods-qml.desktop DESTINATION /app/share/applications/io.github.hafmed.Basic-Numerical-Methods-qml.desktop)
+install(FILES ${PROJECT_SOURCE_DIR}/io.github.hafmed.Basic-Numerical-Methods-qml.png DESTINATION /app/share/icons/hicolor/256x256/apps/io.github.hafmed.Basic-Numerical-Methods-qml.png)
+
