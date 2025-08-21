@@ -72,8 +72,8 @@ install(TARGETS appbasic_numerical_methods_qml
 
 # Install the metainfo file
 install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/io.github.hafmed.Basic-Numerical-Methods-qml.metainfo.xml"
-        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/metainfo")
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/metainfo/")
 install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/io.github.hafmed.Basic-Numerical-Methods-qml.desktop"
-        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/applications")
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/applications/")
 install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/io.github.hafmed.Basic-Numerical-Methods-qml.png"
-        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons")
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/256x256/")
