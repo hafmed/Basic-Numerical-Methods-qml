@@ -68,9 +68,10 @@ install(TARGETS appbasic_numerical_methods_qml
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 
-install(FILES ${PROJECT_SOURCE_DIR}/io.github.hafmed.Basic-Numerical-Methods-qml.metainfo.xml 
-        DESTINATION $ENV{HOME}/.local/app/share/metainfo/io.github.hafmed.Basic-Numerical-Methods-qml.metainfo.xml)
+#install(FILES ${PROJECT_SOURCE_DIR}/io.github.hafmed.Basic-Numerical-Methods-qml.metainfo.xml DESTINATION $ENV{HOME}/.local/app/share/metainfo/io.github.hafmed.Basic-Numerical-Methods-qml.metainfo.xml)
 
+install(FILES "${PROJECT_SOURCE_DIR}/io.github.hafmed.Basic-Numerical-Methods-qml.metainfo.xml"
+        DESTINATION "$ENV{HOME}/.local/app/share/metainfo")
 install(FILES "${PROJECT_SOURCE_DIR}/io.github.hafmed.Basic-Numerical-Methods-qml.desktop"
         DESTINATION "${CMAKE_INSTALL_PREFIX}/share/applications")
 install(FILES "${PROJECT_SOURCE_DIR}/io.github.hafmed.Basic-Numerical-Methods-qml.metainfo.xml"
