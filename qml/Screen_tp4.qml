@@ -9,11 +9,10 @@ import QtQuick.Layouts
 Rectangle {
     width: app.width
     height: app.height-rect.height
-    color:"transparent"
-    Material.theme: Material.Dark
-    Material.accent: Material.Pink
+    color: Material.background
+    Material.background:Material.background
 
-    property string colorfx_linearsyst: "white"
+    property string colorfx_linearsyst: Material.background
 
     function configNbreeqt(value) {
         spinBoxNbreeqtcurrentValue_linearsyst=value-2
@@ -94,6 +93,7 @@ Rectangle {
         id: dialogMessageErrorFparser
         title: "Basic Numerical Methods ver "+appVer
         anchors.centerIn: Overlay.overlay
+        Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
         width: parent.width
         Text {
             id:textfirstuseofappdialog_tp
@@ -101,6 +101,7 @@ Rectangle {
             text: "Error"
             wrapMode: Text.Wrap
             font.bold : true
+            color: Material.foreground
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         }
@@ -437,6 +438,7 @@ Rectangle {
                                     padding: 9
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIjdatan2_linearsyst.savexiyiIjtableModel1datan2_linearsyst()
@@ -445,7 +447,7 @@ Rectangle {
                                         anchors.fill: parent
                                         height: textai1_linearsystn2.implicitHeight
                                         width: textai1_linearsystn2.implicitWidth
-                                        color:"transparent"
+                                        color: Material.background
                                         z: -1
                                         border.color: "steelblue"
                                     }
@@ -462,6 +464,7 @@ Rectangle {
                                     padding: 9
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIjdatan2_linearsyst.savexiyiIjtableModel1datan2_linearsyst()
@@ -470,7 +473,7 @@ Rectangle {
                                         anchors.fill: parent
                                         height: textai2_linearsystn2.implicitHeight
                                         width: textai2_linearsystn2.implicitWidth
-                                        color:"transparent"
+                                        color: Material.background
                                         z: -1
                                         border.color: "steelblue"
                                     }
@@ -487,6 +490,7 @@ Rectangle {
                                     padding: 9
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIjdatan2_linearsyst.savexiyiIjtableModel1datan2_linearsyst()
@@ -495,7 +499,7 @@ Rectangle {
                                         anchors.fill: parent
                                         height: textbi_linearsystn2.implicitHeight
                                         width: textbi_linearsystn2.implicitWidth
-                                        color:"transparent"
+                                        color: Material.background
                                         z: -1
                                         border.color: "steelblue"
                                     }
@@ -582,6 +586,7 @@ Rectangle {
                                     padding: 9
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIjdatan3_linearsyst.savexiyiIjtableModel1datan3_linearsyst()
@@ -591,7 +596,7 @@ Rectangle {
                                         height: textai1_linearsystn3.implicitHeight
                                         width: textai1_linearsystn3.implicitWidth
                                         ///width: parent.width/2
-                                        color:"transparent"
+                                        color: Material.background
                                         z: -1
                                         border.color: "steelblue"
                                     }
@@ -608,6 +613,7 @@ Rectangle {
                                     padding: 9
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIjdatan3_linearsyst.savexiyiIjtableModel1datan3_linearsyst()
@@ -616,7 +622,7 @@ Rectangle {
                                         anchors.fill: parent
                                         height: textai2_linearsystn3.implicitHeight
                                         width: textai2_linearsystn3.implicitWidth
-                                        color:"transparent"
+                                        color: Material.background
                                         z: -1
                                         border.color: "steelblue"
                                     }
@@ -633,6 +639,7 @@ Rectangle {
                                     padding: 9
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIjdatan3_linearsyst.savexiyiIjtableModel1datan3_linearsyst()
@@ -641,7 +648,7 @@ Rectangle {
                                         anchors.fill: parent
                                         height: textai3_linearsystn3.implicitHeight
                                         width: textai3_linearsystn3.implicitWidth
-                                        color:"transparent"
+                                        color: Material.background
                                         z: -1
                                         border.color: "steelblue"
                                     }
@@ -658,6 +665,7 @@ Rectangle {
                                     padding: 9
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIjdatan3_linearsyst.savexiyiIjtableModel1datan3_linearsyst()
@@ -666,7 +674,7 @@ Rectangle {
                                         anchors.fill: parent
                                         height: textbi_linearsystn3.implicitHeight
                                         width: textbi_linearsystn3.implicitWidth
-                                        color:"transparent"
+                                        color: Material.background
                                         z: -1
                                         border.color: "steelblue"
                                     }
@@ -755,6 +763,7 @@ Rectangle {
                                     padding: 9
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIjdatan4_linearsyst.savexiyiIjtableModel1datan4_linearsyst()
@@ -763,7 +772,7 @@ Rectangle {
                                         anchors.fill: parent
                                         height: textai1_linearsystn4.implicitHeight
                                         width: textai1_linearsystn4.implicitWidth
-                                        color:"transparent"
+                                        color: Material.background
                                         z: -1
                                         border.color: "steelblue"
                                     }
@@ -780,6 +789,7 @@ Rectangle {
                                     padding: 9
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIjdatan4_linearsyst.savexiyiIjtableModel1datan4_linearsyst()
@@ -788,7 +798,7 @@ Rectangle {
                                         anchors.fill: parent
                                         height: textai2_linearsystn4.implicitHeight
                                         width: textai2_linearsystn4.implicitWidth
-                                        color:"transparent"
+                                        color: Material.background
                                         z: -1
                                         border.color: "steelblue"
                                     }
@@ -805,6 +815,7 @@ Rectangle {
                                     padding: 9
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIjdatan4_linearsyst.savexiyiIjtableModel1datan4_linearsyst()
@@ -813,7 +824,7 @@ Rectangle {
                                         anchors.fill: parent
                                         height: textai3_linearsystn4.implicitHeight
                                         width: textai3_linearsystn4.implicitWidth
-                                        color:"transparent"
+                                        color: Material.background
                                         z: -1
                                         border.color: "steelblue"
                                     }
@@ -830,6 +841,7 @@ Rectangle {
                                     padding: 9
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIjdatan4_linearsyst.savexiyiIjtableModel1datan4_linearsyst()
@@ -838,7 +850,7 @@ Rectangle {
                                         anchors.fill: parent
                                         height: textai4_linearsystn4.implicitHeight
                                         width: textai4_linearsystn4.implicitWidth
-                                        color:"transparent"
+                                        color: Material.background
                                         z: -1
                                         border.color: "steelblue"
                                     }
@@ -855,6 +867,7 @@ Rectangle {
                                     padding: 9
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIjdatan4_linearsyst.savexiyiIjtableModel1datan4_linearsyst()
@@ -863,7 +876,7 @@ Rectangle {
                                         anchors.fill: parent
                                         height: textbi_linearsystn4.implicitHeight
                                         width: textbi_linearsystn4.implicitWidth
-                                        color:"transparent"
+                                        color: Material.background
                                         z: -1
                                         border.color: "steelblue"
                                     }
@@ -955,6 +968,7 @@ Rectangle {
                                     padding: 9
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIjdatan5_linearsyst.savexiyiIjtableModel1datan5_linearsyst()
@@ -963,7 +977,7 @@ Rectangle {
                                         anchors.fill: parent
                                         height: textai1_linearsystn5.implicitHeight
                                         width: textai1_linearsystn5.implicitWidth
-                                        color:"transparent"
+                                        color: Material.background
                                         z: -1
                                         border.color: "steelblue"
                                     }
@@ -980,6 +994,7 @@ Rectangle {
                                     padding: 9
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIjdatan5_linearsyst.savexiyiIjtableModel1datan5_linearsyst()
@@ -988,7 +1003,7 @@ Rectangle {
                                         anchors.fill: parent
                                         height: textai2_linearsystn5.implicitHeight
                                         width: textai2_linearsystn5.implicitWidth
-                                        color:"transparent"
+                                        color: Material.background
                                         z: -1
                                         border.color: "steelblue"
                                     }
@@ -1005,6 +1020,7 @@ Rectangle {
                                     padding: 9
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIjdatan5_linearsyst.savexiyiIjtableModel1datan5_linearsyst()
@@ -1013,7 +1029,7 @@ Rectangle {
                                         anchors.fill: parent
                                         height: textai3_linearsystn5.implicitHeight
                                         width: textai3_linearsystn5.implicitWidth
-                                        color:"transparent"
+                                        color: Material.background
                                         z: -1
                                         border.color: "steelblue"
                                     }
@@ -1030,6 +1046,7 @@ Rectangle {
                                     padding: 9
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIjdatan5_linearsyst.savexiyiIjtableModel1datan5_linearsyst()
@@ -1038,7 +1055,7 @@ Rectangle {
                                         anchors.fill: parent
                                         height: textai4_linearsystn5.implicitHeight
                                         width: textai4_linearsystn5.implicitWidth
-                                        color:"transparent"
+                                        color: Material.background
                                         z: -1
                                         border.color: "steelblue"
                                     }
@@ -1055,6 +1072,7 @@ Rectangle {
                                     padding: 9
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIjdatan5_linearsyst.savexiyiIjtableModel1datan5_linearsyst()
@@ -1063,7 +1081,7 @@ Rectangle {
                                         anchors.fill: parent
                                         height: textai5_linearsystn5.implicitHeight
                                         width: textai5_linearsystn5.implicitWidth
-                                        color:"transparent"
+                                        color: Material.background
                                         z: -1
                                         border.color: "steelblue"
                                     }
@@ -1080,6 +1098,7 @@ Rectangle {
                                     padding: 9
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIjdatan5_linearsyst.savexiyiIjtableModel1datan5_linearsyst()
@@ -1088,7 +1107,7 @@ Rectangle {
                                         anchors.fill: parent
                                         height: textbi_linearsystn5.implicitHeight
                                         width: textbi_linearsystn5.implicitWidth
-                                        color:"transparent"
+                                        color: Material.background
                                         z: -1
                                         border.color: "steelblue"
                                     }
@@ -1292,12 +1311,13 @@ Rectangle {
                                         readOnly : true
                                         selectByMouse: true
                                         renderType: Text.NativeRendering
+                                        color: Material.foreground
                                         Rectangle {
                                             anchors.fill: parent
                                             height: textai1MatriTriaSup_linearsystn2.implicitHeight
                                             width: textai1MatriTriaSup_linearsystn2.implicitWidth
                                             ///width: parent.width/2
-                                            color:"transparent"
+                                            color: Material.background
                                             z: -1
                                             border.color: "steelblue"
                                         }
@@ -1315,11 +1335,12 @@ Rectangle {
                                         readOnly : true
                                         selectByMouse: true
                                         renderType: Text.NativeRendering
+                                        color: Material.foreground
                                         Rectangle {
                                             anchors.fill: parent
                                             height: textai2MatriTriaSup_linearsystn2.implicitHeight
                                             width: textai2MatriTriaSup_linearsystn2.implicitWidth
-                                            color:"transparent"
+                                            color: Material.background
                                             z: -1
                                             border.color: "steelblue"
                                         }
@@ -1337,11 +1358,12 @@ Rectangle {
                                         readOnly : true
                                         selectByMouse: true
                                         renderType: Text.NativeRendering
+                                        color: Material.foreground
                                         Rectangle {
                                             anchors.fill: parent
                                             height: textbiMatriTriaSup_linearsystn2.implicitHeight
                                             width: textbiMatriTriaSup_linearsystn2.implicitWidth
-                                            color:"transparent"
+                                            color: Material.background
                                             z: -1
                                             border.color: "steelblue"
                                         }
@@ -1412,11 +1434,12 @@ Rectangle {
                                         readOnly : true
                                         selectByMouse: true
                                         renderType: Text.NativeRendering
+                                        color: Material.foreground
                                         Rectangle {
                                             anchors.fill: parent
                                             height: textai1MatriTriaSup_linearsystn3.implicitHeight
                                             width: textai1MatriTriaSup_linearsystn3.implicitWidth
-                                            color:"transparent"
+                                            color: Material.background
                                             z: -1
                                             border.color: "steelblue"
                                         }
@@ -1434,11 +1457,12 @@ Rectangle {
                                         readOnly : true
                                         selectByMouse: true
                                         renderType: Text.NativeRendering
+                                        color: Material.foreground
                                         Rectangle {
                                             anchors.fill: parent
                                             height: textai2MatriTriaSup_linearsystn3.implicitHeight
                                             width: textai2MatriTriaSup_linearsystn3.implicitWidth
-                                            color:"transparent"
+                                            color: Material.background
                                             z: -1
                                             border.color: "steelblue"
                                         }
@@ -1456,11 +1480,12 @@ Rectangle {
                                         readOnly : true
                                         selectByMouse: true
                                         renderType: Text.NativeRendering
+                                        color: Material.foreground
                                         Rectangle {
                                             anchors.fill: parent
                                             height: textai3MatriTriaSup_linearsystn3.implicitHeight
                                             width: textai3MatriTriaSup_linearsystn3.implicitWidth
-                                            color:"transparent"
+                                            color: Material.background
                                             z: -1
                                             border.color: "steelblue"
                                         }
@@ -1478,11 +1503,12 @@ Rectangle {
                                         readOnly : true
                                         selectByMouse: true
                                         renderType: Text.NativeRendering
+                                        color: Material.foreground
                                         Rectangle {
                                             anchors.fill: parent
                                             height: textbiMatriTriaSup_linearsystn3.implicitHeight
                                             width: textbiMatriTriaSup_linearsystn3.implicitWidth
-                                            color:"transparent"
+                                            color: Material.background
                                             z: -1
                                             border.color: "steelblue"
                                         }
@@ -1554,11 +1580,12 @@ Rectangle {
                                         readOnly : true
                                         selectByMouse: true
                                         renderType: Text.NativeRendering
+                                        color: Material.foreground
                                         Rectangle {
                                             anchors.fill: parent
                                             height: textai1MatriTriaSup_linearsystn4.implicitHeight
                                             width: textai1MatriTriaSup_linearsystn4.implicitWidth
-                                            color:"transparent"
+                                            color: Material.background
                                             z: -1
                                             border.color: "steelblue"
                                         }
@@ -1576,11 +1603,12 @@ Rectangle {
                                         readOnly : true
                                         selectByMouse: true
                                         renderType: Text.NativeRendering
+                                        color: Material.foreground
                                         Rectangle {
                                             anchors.fill: parent
                                             height: textai2MatriTriaSup_linearsystn4.implicitHeight
                                             width: textai2MatriTriaSup_linearsystn4.implicitWidth
-                                            color:"transparent"
+                                            color: Material.background
                                             z: -1
                                             border.color: "steelblue"
                                         }
@@ -1598,11 +1626,12 @@ Rectangle {
                                         readOnly : true
                                         selectByMouse: true
                                         renderType: Text.NativeRendering
+                                        color: Material.foreground
                                         Rectangle {
                                             anchors.fill: parent
                                             height: textai3MatriTriaSup_linearsystn4.implicitHeight
                                             width: textai3MatriTriaSup_linearsystn4.implicitWidth
-                                            color:"transparent"
+                                            color: Material.background
                                             z: -1
                                             border.color: "steelblue"
                                         }
@@ -1620,11 +1649,12 @@ Rectangle {
                                         readOnly : true
                                         selectByMouse: true
                                         renderType: Text.NativeRendering
+                                        color: Material.foreground
                                         Rectangle {
                                             anchors.fill: parent
                                             height: textai4MatriTriaSup_linearsystn4.implicitHeight
                                             width: textai4MatriTriaSup_linearsystn4.implicitWidth
-                                            color:"transparent"
+                                            color: Material.background
                                             z: -1
                                             border.color: "steelblue"
                                         }
@@ -1642,11 +1672,12 @@ Rectangle {
                                         readOnly : true
                                         selectByMouse: true
                                         renderType: Text.NativeRendering
+                                        color: Material.foreground
                                         Rectangle {
                                             anchors.fill: parent
                                             height: textbiMatriTriaSup_linearsystn4.implicitHeight
                                             width: textbiMatriTriaSup_linearsystn4.implicitWidth
-                                            color:"transparent"
+                                            color: Material.background
                                             z: -1
                                             border.color: "steelblue"
                                         }
@@ -1719,11 +1750,12 @@ Rectangle {
                                         readOnly : true
                                         selectByMouse: true
                                         renderType: Text.NativeRendering
+                                        color: Material.foreground
                                         Rectangle {
                                             anchors.fill: parent
                                             height: textai1MatriTriaSup_linearsystn5.implicitHeight
                                             width: textai1MatriTriaSup_linearsystn5.implicitWidth
-                                            color:"transparent"
+                                            color: Material.background
                                             z: -1
                                             border.color: "steelblue"
                                         }
@@ -1741,11 +1773,12 @@ Rectangle {
                                         readOnly : true
                                         selectByMouse: true
                                         renderType: Text.NativeRendering
+                                        color: Material.foreground
                                         Rectangle {
                                             anchors.fill: parent
                                             height: textai2MatriTriaSup_linearsystn5.implicitHeight
                                             width: textai2MatriTriaSup_linearsystn5.implicitWidth
-                                            color:"transparent"
+                                            color: Material.background
                                             z: -1
                                             border.color: "steelblue"
                                         }
@@ -1763,11 +1796,12 @@ Rectangle {
                                         readOnly : true
                                         selectByMouse: true
                                         renderType: Text.NativeRendering
+                                        color: Material.foreground
                                         Rectangle {
                                             anchors.fill: parent
                                             height: textai3MatriTriaSup_linearsystn5.implicitHeight
                                             width: textai3MatriTriaSup_linearsystn5.implicitWidth
-                                            color:"transparent"
+                                            color: Material.background
                                             z: -1
                                             border.color: "steelblue"
                                         }
@@ -1785,11 +1819,12 @@ Rectangle {
                                         readOnly : true
                                         selectByMouse: true
                                         renderType: Text.NativeRendering
+                                        color: Material.foreground
                                         Rectangle {
                                             anchors.fill: parent
                                             height: textai4MatriTriaSup_linearsystn5.implicitHeight
                                             width: textai4MatriTriaSup_linearsystn5.implicitWidth
-                                            color:"transparent"
+                                            color: Material.background
                                             z: -1
                                             border.color: "steelblue"
                                         }
@@ -1807,11 +1842,12 @@ Rectangle {
                                         readOnly : true
                                         selectByMouse: true
                                         renderType: Text.NativeRendering
+                                        color: Material.foreground
                                         Rectangle {
                                             anchors.fill: parent
                                             height: textai5MatriTriaSup_linearsystn5.implicitHeight
                                             width: textai5MatriTriaSup_linearsystn5.implicitWidth
-                                            color:"transparent"
+                                            color: Material.background
                                             z: -1
                                             border.color: "steelblue"
                                         }
@@ -1829,11 +1865,12 @@ Rectangle {
                                         readOnly : true
                                         selectByMouse: true
                                         renderType: Text.NativeRendering
+                                        color: Material.foreground
                                         Rectangle {
                                             anchors.fill: parent
                                             height: textbiMatriTriaSup_linearsystn5.implicitHeight
                                             width: textbiMatriTriaSup_linearsystn5.implicitWidth
-                                            color:"transparent"
+                                            color: Material.background
                                             z: -1
                                             border.color: "steelblue"
                                         }
@@ -1907,13 +1944,14 @@ Rectangle {
                                 readOnly : true
                                 selectByMouse: true
                                 renderType: Text.NativeRendering
+                                color: Material.foreground
                                 onTextChanged: tabviewxiyiIjResultsGSJacon2_linearsyst.forceLayout()
                                 Rectangle {
                                     id: overlayResultsGSJaco_linearsystn2
                                     anchors.fill: parent
                                     height: textai1ResultsGSJaco_linearsystn2.implicitHeight
                                     width: textai1ResultsGSJaco_linearsystn2.implicitWidth
-                                    ///color:"transparent"
+                                    ///color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
@@ -1980,13 +2018,14 @@ Rectangle {
                                 readOnly : true
                                 selectByMouse: true
                                 renderType: Text.NativeRendering
+                                color: Material.foreground
                                 onTextChanged: tabviewxiyiIjResultsGSJacon3_linearsyst.forceLayout()
                                 Rectangle {
                                     id: overlayResultsGSJaco_linearsystn3
                                     anchors.fill: parent
                                     height: textai1ResultsGSJaco_linearsystn3.implicitHeight
                                     width: textai1ResultsGSJaco_linearsystn3.implicitWidth
-                                    ///color:"transparent"
+                                    ///color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
@@ -2054,13 +2093,14 @@ Rectangle {
                                 readOnly : true
                                 selectByMouse: true
                                 renderType: Text.NativeRendering
+                                color: Material.foreground
                                 onTextChanged: tabviewxiyiIjResultsGSJacon4_linearsyst.forceLayout()
                                 Rectangle {
                                     id: overlayResultsGSJaco_linearsystn4
                                     anchors.fill: parent
                                     height: textai1ResultsGSJaco_linearsystn4.implicitHeight
                                     width: textai1ResultsGSJaco_linearsystn4.implicitWidth
-                                    ///color:"transparent"
+                                    ///color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
@@ -2129,13 +2169,14 @@ Rectangle {
                                 readOnly : true
                                 selectByMouse: true
                                 renderType: Text.NativeRendering
+                                color: Material.foreground
                                 onTextChanged: tabviewxiyiIjResultsGSJacon5_linearsyst.forceLayout()
                                 Rectangle {
                                     id: overlayResultsGSJaco_linearsystn5
                                     anchors.fill: parent
                                     height: textai1ResultsGSJaco_linearsystn5.implicitHeight
                                     width: textai1ResultsGSJaco_linearsystn5.implicitWidth
-                                    ///color:"transparent"
+                                    ///color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
@@ -2155,6 +2196,7 @@ Rectangle {
                 readOnly : true
                 selectByMouse: true
                 renderType: Text.NativeRendering
+                color: Material.foreground
                 placeholderText: qsTr("Results")
             }
         }

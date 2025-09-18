@@ -12,10 +12,9 @@ Dialog {
     anchors.centerIn: Overlay.overlay
     width:app.width
     height: app.height/5*4.9
-    Material.theme: Material.Dark
-    Material.accent: Material.Pink
+    Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
 
-    property string colorfx_plot: "white"
+    property string colorfx_plot:  Material.background
 
     ScrollView {
         anchors.fill: parent
@@ -27,10 +26,8 @@ Dialog {
             Rectangle {
                 width: app.width-25
                 height: app.height*1.5
-                color:"transparent"
-                Material.theme: Material.Dark
-                Material.accent: Material.Pink
-
+                color: Material.background
+                Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
                 Connections {
                     target: CalculHaf
                     function onRequestDialog_plot(title,error){
@@ -51,6 +48,7 @@ Dialog {
                     title: "Basic Numerical Methods ver "+appVer
                     anchors.centerIn: Overlay.overlay
                     width: parent.width
+                    Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
                     Text {
                         id:textfirstuseofappdialog_tp
                         width: parent.width
@@ -59,6 +57,7 @@ Dialog {
                         font.bold : true
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
+                        color: Material.foreground
                     }
                     standardButtons: Dialog.Ok
                     onAccepted: {
@@ -107,7 +106,8 @@ Dialog {
                             width: app.width-50
                             placeholderText: qsTr("y=f(x)")
                             text: fx_plot
-                            color: colorfx_plot
+                            Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
+                            color: colorfx_plot=="white"? themeofapp==="Dark"? "white":"black" :"red"
                             onTextChanged: {if (textfx_plot.text==="nan" || textfx_plot.text==="NaN") textfx_plot.text=fx_plot ;
                                 fx_plot=textfx_plot.text;
                                 colorfx_plot=CalculHaf.textChangedinfx_plot(fx_plot)
@@ -217,7 +217,7 @@ Dialog {
                                 id:rectabview1_plot
                                 width: parent.width-17
                                 height: 250
-                                color: "transparent"
+                                color: Material.background
                                 HorizontalHeaderView {
                                     id: horizontalHeader2_plot
                                     anchors.left: tabview1_plot.left
@@ -307,12 +307,13 @@ Dialog {
                                                 readOnly : true
                                                 selectByMouse: true
                                                 renderType: Text.NativeRendering
+                                                ///color: Material.foregroundFieldHeight
                                                 onTextChanged: tabview1_plot.forceLayout()
                                                 Rectangle {
                                                     anchors.fill: parent
+                                                    color: Material.background
                                                     height: textxi_plot.implicitHeight
                                                     width: textxi_plot.implicitWidth
-                                                    color:"transparent"
                                                     z: -1
                                                     border.color: "steelblue"
                                                 }
@@ -330,12 +331,13 @@ Dialog {
                                                 readOnly : true
                                                 selectByMouse: true
                                                 renderType: Text.NativeRendering
+                                                ///color: Material.theme
                                                 onTextChanged: tabview1_plot.forceLayout()
                                                 Rectangle {
                                                     anchors.fill: parent
+                                                    color: Material.background
                                                     height: textyi_plot.implicitHeight
                                                     width: textyi_plot.implicitWidth
-                                                    color:"transparent"
                                                     z: -1
                                                     border.color: "steelblue"
                                                 }
@@ -348,7 +350,7 @@ Dialog {
                             Rectangle {
                                 width: parent.width-rectabview1_plot.width
                                 height: rectabview1_plot.height
-                                color:"transparent"
+                                color: Material.background
                                 ChartView {
                                     id: myChart_plot
                                     clip: true
@@ -362,14 +364,14 @@ Dialog {
                                     antialiasing: true
                                     animationOptions: ChartView.SeriesAnimations
                                     ///legend.visible: false
-                                    theme: ChartView.ChartThemeDark
+                                    theme: themeofapp=="Dark" ? ChartView.ChartThemeDark:ChartView.ChartThemeLight
+                                    /////theme: ChartView.ChartThemeDark
                                     ScatterSeries{
                                         id:scatterSerie1_plot
                                         axisX: axisX_plot
                                         axisY: axisY_plot
                                         markerSize: 30
                                         name: "y=f(x)" ///"Scatter"
-                                        borderColor: "transparent"
                                         ///brush: gui.chartBrush
                                         markerShape: ScatterSeries.MarkerShapeRectangle
                                         pointsVisible: true
