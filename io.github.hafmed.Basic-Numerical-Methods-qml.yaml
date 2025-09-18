@@ -1,4 +1,3 @@
-    # Example Flatpak manifest for a simple Qt application
     app-id: io.github.hafmed.Basic-Numerical-Methods-qml
     runtime: org.kde.Platform
     runtime-version: "6.9"
@@ -13,14 +12,6 @@
       - name: appbasic_numerical_methods_qml
         buildsystem: cmake-ninja
         sources:
-          - type: archive
-            url: https://github.com/hafmed/Basic-Numerical-Methods-qml/archive/refs/tags/v1.6.9.tar.gz # Git repository source
-            sha256: 3692dc5860db69eaab7714d05069f9f9b91501136faabade2af256fc26d51c71
-        post-install:
-        - install -Dm644 io.github.hafmed.Basic-Numerical-Methods-qml.metainfo.xml /app/share/metainfo/io.github.hafmed.Basic-Numerical-Methods-qml.metainfo.xml
-        - install -Dm644 io.github.hafmed.Basic-Numerical-Methods-qml.desktop /app/share/applications/io.github.hafmed.Basic-Numerical-Methods-qml.desktop
-        - install -Dm644 io.github.hafmed.Basic-Numerical-Methods-qml.png /app/share/icons/hicolor/256x256/apps/io.github.hafmed.Basic-Numerical-Methods-qml.png
-
-
-
+           - type: dir
+             path: /home/hafmed/Documents/25-26/Basic-Numerical-Methods-qml-1.7.0/
 

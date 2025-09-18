@@ -12,8 +12,7 @@ SwipeView {
     anchors.right: parent.right
     anchors.bottom: parent.bottom
     anchors.left: parent.left
-    Material.theme: Material.Dark
-    Material.accent: Material.Purple
+
     currentIndex: tabBar.currentIndex
 
     onCurrentIndexChanged:{

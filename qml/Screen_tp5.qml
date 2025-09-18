@@ -9,18 +9,17 @@ import QtQuick.Layouts
 Rectangle {
     width: app.width
     height: app.height-rect.height
-    color:"transparent"
-    Material.theme: Material.Dark
-    Material.accent: Material.Pink
+    color: Material.background
+    Material.background:Material.background
 
-    property string colorfxy1_nonlinearsyst: "white"
-    property string colorfxy2_nonlinearsyst: "white"
+    property string colorfxy1_nonlinearsyst: Material.background
+    property string colorfxy2_nonlinearsyst: Material.background
 
-    property string colorgxy1PF_nonlinearsyst: "white"
-    property string colorgxy2PF_nonlinearsyst: "white"
+    property string colorgxy1PF_nonlinearsyst: Material.background
+    property string colorgxy2PF_nonlinearsyst: Material.background
 
-    property string colordf1xyNR_nonlinearsyst: "white"
-    property string colordf2xyNR_nonlinearsyst: "white"
+    property string colordf1xyNR_nonlinearsyst: Material.background
+    property string colordf2xyNR_nonlinearsyst: Material.background
 
     function fmethodeindex_nonlinearsyst()
     {
@@ -49,6 +48,7 @@ Rectangle {
         id: dialogMessageErrorFparser
         title: "Basic Numerical Methods ver "+appVer
         anchors.centerIn: Overlay.overlay
+        Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
         width: parent.width
         Text {
             id:textfirstuseofappdialog_tp
@@ -56,6 +56,7 @@ Rectangle {
             text: "Error"
             wrapMode: Text.Wrap
             font.bold : true
+            color: Material.foreground
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         }
@@ -105,7 +106,7 @@ Rectangle {
                     width: parent.width/2-image1nonlineareqt.width/2
                     placeholderText: qsTr("f1(x,y)")
                     text: settings.fxy1_nonlinearsyst
-                    color: colorfxy1_nonlinearsyst
+                    color: colorfxy1_nonlinearsyst=="white"?  themeofapp==="Dark"? "white":"black" :"red"
                     onTextChanged: {if (textfxy1_nonlinearsyst.text==="nan" || textfxy1_nonlinearsyst.text==="NaN") textfxy1_nonlinearsyst.text=fxy1_nonlinearsyst ;
                         fxy1_nonlinearsyst=textfxy1_nonlinearsyst.text;
                         colorfxy1_nonlinearsyst=CalculHaf.textChangedinfunctionfxy1(fxy1_nonlinearsyst)
@@ -135,7 +136,7 @@ Rectangle {
                     width: parent.width/2-image1nonlineareqt.width/2
                     placeholderText: qsTr("f2(x,y)")
                     text: settings.fxy2_nonlinearsyst
-                    color: colorfxy2_nonlinearsyst
+                    color: colorfxy2_nonlinearsyst=="white"?  themeofapp==="Dark"? "white":"black" :"red"
                     onTextChanged: {if (textfxy2_nonlinearsyst.text==="nan" || textfxy2_nonlinearsyst.text==="NaN") textfxy2_nonlinearsyst.text=fxy2_nonlinearsyst ;
                         fxy2_nonlinearsyst=textfxy2_nonlinearsyst.text;
                         colorfxy2_nonlinearsyst=CalculHaf.textChangedinfunctionfxy2(fxy2_nonlinearsyst)
@@ -159,7 +160,7 @@ Rectangle {
                             width: parent.width/2-image2nonlineareqt.width/2
                             placeholderText: qsTr("g1(x,y)")
                             text: settings.gxy1PF_nonlinearsyst
-                            color: colorgxy1PF_nonlinearsyst
+                            color: colorgxy1PF_nonlinearsyst=="white"?  themeofapp==="Dark"? "white":"black" :"red"
                             onTextChanged: {if (textgxy1_nonlinearsyst.text==="nan" || textgxy1_nonlinearsyst.text==="NaN") textgxy1_nonlinearsyst.text=gxy1PF_nonlinearsyst ;
                                 gxy1PF_nonlinearsyst=textgxy1_nonlinearsyst.text;
                                 colorgxy1PF_nonlinearsyst=CalculHaf.textChangedinfunctiongxy1PF(gxy1PF_nonlinearsyst)
@@ -187,7 +188,7 @@ Rectangle {
                             width: parent.width/2-image2nonlineareqt.width/2
                             placeholderText: qsTr("g2(x,y)")
                             text: settings.gxy2PF_nonlinearsyst
-                            color: colorgxy2PF_nonlinearsyst
+                            color: colorgxy2PF_nonlinearsyst=="white"? themeofapp==="Dark"? "white":"black" :"red"
                             onTextChanged: {if (textgxy2_nonlinearsyst.text==="nan" || textgxy2_nonlinearsyst.text==="NaN") textgxy2_nonlinearsyst.text=gxy2PF_nonlinearsyst ;
                                 gxy2PF_nonlinearsyst=textgxy2_nonlinearsyst.text;
                                 colorgxy2PF_nonlinearsyst=CalculHaf.textChangedinfunctiongxy2PF(gxy2PF_nonlinearsyst)
@@ -250,7 +251,7 @@ Rectangle {
                             width: parent.width/2
                             placeholderText: qsTr("df1(x,y)/dx")
                             text: settings.df1xyNR_nonlinearsyst
-                            color: colordf1xyNR_nonlinearsyst
+                            color: colordf1xyNR_nonlinearsyst=="white"?  themeofapp==="Dark"? "white":"black" :"red"
                             onTextChanged: {if (textdf1xyNR_nonlinearsyst.text==="nan" || textdf1xyNR_nonlinearsyst.text==="NaN") textdf1xyNR_nonlinearsyst.text=df1xyNR_nonlinearsyst ;
                                 df1xyNR_nonlinearsyst=textdf1xyNR_nonlinearsyst.text;
                                 colordf1xyNR_nonlinearsyst=CalculHaf.textChangedinfunctiondf1xyNR(df1xyNR_nonlinearsyst)
@@ -261,7 +262,7 @@ Rectangle {
                             width: parent.width/2
                             placeholderText: qsTr("df2(x,y)/dy")
                             text: settings.df2xyNR_nonlinearsyst
-                            color: colordf2xyNR_nonlinearsyst
+                            color: colordf2xyNR_nonlinearsyst=="white"? themeofapp==="Dark"? "white":"black" :"red"
                             onTextChanged: {if (textdf2xyNR_nonlinearsyst.text==="nan" || textdf2xyNR_nonlinearsyst.text==="NaN") textdf2xyNR_nonlinearsyst.text=df2xyNR_nonlinearsyst ;
                                 df2xyNR_nonlinearsyst=textdf2xyNR_nonlinearsyst.text;
                                 colordf2xyNR_nonlinearsyst=CalculHaf.textChangedinfunctiondf2xyNR(df2xyNR_nonlinearsyst)
@@ -416,6 +417,7 @@ Rectangle {
                     Rectangle {
                         id:rectabviewPF_nonlinearsyst
                         width: parent.width
+                        color: Material.background
                         height: 175
                         HorizontalHeaderView {
                             id: horizontalHeaderPF_nonlinearsyst
@@ -467,6 +469,7 @@ Rectangle {
                                 readOnly : true
                                 selectByMouse: true
                                 renderType: Text.NativeRendering
+                                color: Material.foreground
                                 onTextEdited: {
                                     model.display = text
                                 }
@@ -476,7 +479,7 @@ Rectangle {
                                     anchors.fill: parent
                                     height: textItemxiPF_nonlinearsyst.implicitHeight
                                     width: textItemxiPF_nonlinearsyst.implicitWidth
-                                    color:"transparent"
+                                    color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
@@ -487,7 +490,7 @@ Rectangle {
                         Layout.alignment: Qt.AlignTop
                         width: parent.width
                         height: image1_nonlineareqt.height
-                        color:"transparent"
+                        color: Material.background
                         Image {
                             id: image1_nonlineareqt
                             width: parent.width
@@ -504,6 +507,7 @@ Rectangle {
                     Rectangle {
                         id:rectabviewNR_nonlinearsyst
                         width: parent.width
+                        color: Material.background
                         height: 175
                         HorizontalHeaderView {
                             id: horizontalHeaderNR_nonlinearsyst
@@ -555,6 +559,7 @@ Rectangle {
                                 readOnly : true
                                 selectByMouse: true
                                 renderType: Text.NativeRendering
+                                color: Material.foreground
                                 onTextEdited: {
                                     model.display = text
                                 }
@@ -564,7 +569,7 @@ Rectangle {
                                     anchors.fill: parent
                                     height: textItemxiNR_nonlinearsyst.implicitHeight
                                     width: textItemxiNR_nonlinearsyst.implicitWidth
-                                    color:"transparent"
+                                    color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
@@ -575,7 +580,7 @@ Rectangle {
                         Layout.alignment: Qt.AlignTop
                         width: parent.width
                         height: image2_nonlineareqt.height
-                        color:"transparent"
+                        color: Material.background
                         Image {
                             id: image2_nonlineareqt
                             width: parent.width

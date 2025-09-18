@@ -9,11 +9,9 @@ import QtQuick.Layouts
 Rectangle {
     width: app.width
     height: app.height-rect.height
-    color:"transparent"
-    Material.theme: Material.Dark
-    Material.accent: Material.Pink
-
-    property string colorfxy_edoeqt: "white"
+    color: Material.background
+    Material.background:Material.background
+    property string colorfxy_edoeqt: Material.background
 
     function fmethodeindex_edoeqt()
     {
@@ -40,12 +38,14 @@ Rectangle {
         title: "Basic Numerical Methods ver "+appVer
         anchors.centerIn: Overlay.overlay
         width: parent.width
+        Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
         Text {
             id:textfirstuseofappdialog_tp
             width: parent.width
             text: "Error"
             wrapMode: Text.Wrap
             font.bold : true
+            color: Material.foreground
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         }
@@ -89,7 +89,7 @@ Rectangle {
                 width: parent.width
                 placeholderText: qsTr("y'=f(x,y)")
                 text: settings.fxy_edoeqt
-                color: colorfxy_edoeqt
+                color: colorfxy_edoeqt=="white"?  themeofapp==="Dark"? "white":"black" :"red"
                 onTextChanged: {if (textfxy_edoeqt.text==="nan" || textfxy_edoeqt.text==="NaN") textfxy_edoeqt.text=fxy_edoeqt ;
                     fxy_edoeqt=textfxy_edoeqt.text;
                     colorfxy_edoeqt=CalculHaf.textChangedinfunctionyprime(fxy_edoeqt)
@@ -293,6 +293,7 @@ Rectangle {
                 id:rectabview_edoeqt
                 width: parent.width
                 height: nbrePts_edoeqt*45
+                color: Material.background
                 HorizontalHeaderView {
                     id: horizontalHeader_edoeqt
                     anchors.left: tabview_edoeqt.left
@@ -341,6 +342,7 @@ Rectangle {
                         readOnly : true
                         selectByMouse: true
                         renderType: Text.NativeRendering
+                        color: Material.foreground
                         onTextEdited: {
                             model.display = text
                         }
@@ -349,14 +351,13 @@ Rectangle {
                             anchors.fill: parent
                             height: textItemxi_edoeqt.implicitHeight
                             width: textItemxi_edoeqt.implicitWidth
-                            color:"transparent"
+                            color: Material.background
                             z: -1
                             border.color: "steelblue"
                         }
                     }
                 }
             }
-
             }
             }
     }

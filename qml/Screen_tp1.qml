@@ -9,15 +9,14 @@ import QtQuick.Layouts
 Rectangle {
     width: app.width
     height: app.height-rect.height
-    color:"transparent"
-    Material.theme: Material.Dark
-    Material.accent: Material.Pink
+    color: Material.background
+    Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
     Plotfx{
         id:plotfx
     }
-    property string colorfx_nonlineareqt: "white"
-    property string colorgxPF_nonlineareqt: "white"
-    property string colorfprimNR_nonlineareqt: "white"
+    property string colorfx_nonlineareqt: Material.background
+    property string colorgxPF_nonlineareqt: Material.background
+    property string colorfprimNR_nonlineareqt: Material.background
 
     function fmethodeindex_nonlineareqt()
     {
@@ -62,6 +61,7 @@ Rectangle {
         title: "Basic Numerical Methods ver "+appVer
         anchors.centerIn: Overlay.overlay
         width: parent.width
+       Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
         Text {
             id:textfirstuseofappdialog_tp
             width: parent.width
@@ -70,6 +70,7 @@ Rectangle {
             font.bold : true
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
+            color: Material.foreground
         }
         standardButtons: Dialog.Ok
         onAccepted: {
@@ -147,7 +148,7 @@ Rectangle {
                     width: parent.width/3*2
                     placeholderText: qsTr("f(x)")
                     text: settings.fx_nonlineareqt
-                    color: colorfx_nonlineareqt
+                    color: colorfx_nonlineareqt=="white"? themeofapp==="Dark"? "white":"black" :"red"
                     onTextChanged: {if (textfx_nonlineareqt.text==="nan" || textfx_nonlineareqt.text==="NaN") textfx_nonlineareqt.text=fx_nonlineareqt ;
                         fx_nonlineareqt=textfx_nonlineareqt.text;
                         colorfx_nonlineareqt=CalculHaf.textChangedinfunctionfx(fx_nonlineareqt)
@@ -203,7 +204,7 @@ Rectangle {
                         width: parent.width
                         placeholderText: qsTr("g(x)")
                         text: settings.gxPF_nonlineareqt
-                        color: colorgxPF_nonlineareqt
+                        color: colorgxPF_nonlineareqt=="white"? themeofapp==="Dark"? "white":"black" :"red"
                         onTextChanged: {if (textgxPF_nonlineareqt.text==="nan" || textgxPF_nonlineareqt.text==="NaN") textgxPF_nonlineareqt.text=gxPF_nonlineareqt ;
                             gxPF_nonlineareqt=textgxPF_nonlineareqt.text;
                             colorgxPF_nonlineareqt=CalculHaf.textChangedinfunctiongxPF(gxPF_nonlineareqt)
@@ -231,7 +232,7 @@ Rectangle {
                         width: parent.width
                         placeholderText: qsTr("f'(x)")
                         text: settings.fprimNR_nonlineareqt
-                        color: colorfprimNR_nonlineareqt
+                        color: colorfprimNR_nonlineareqt=="white"? themeofapp==="Dark"? "white":"black" :"red"
                         onTextChanged: {if (textfprimNR_nonlineareqt.text==="nan" || textfprimNR_nonlineareqt.text==="NaN") textfprimNR_nonlineareqt.text=fprimNR_nonlineareqt ;
                             fprimNR_nonlineareqt=textfprimNR_nonlineareqt.text;
                             colorfprimNR_nonlineareqt=CalculHaf.textChangedinfunctionfprimNR(fprimNR_nonlineareqt)
@@ -504,6 +505,7 @@ Rectangle {
                     id:rectabviewPF_nonlineareqt
                     width: parent.width
                     height: 175
+                    color: Material.background
                     HorizontalHeaderView {
                         id: horizontalHeaderPF_nonlineareqt
                         anchors.left: tabviewPF_nonlineareqt.left
@@ -553,6 +555,7 @@ Rectangle {
                             readOnly : true
                             selectByMouse: true
                             renderType: Text.NativeRendering
+                            color: Material.foreground
                             onTextEdited: {
                                 model.display = text
                             }
@@ -564,11 +567,9 @@ Rectangle {
                                 anchors.fill: parent
                                 height: textItemxiPF_nonlineareqt.implicitHeight
                                 width: textItemxiPF_nonlineareqt.implicitWidth
-                                ///width: parent.width/2
-                                color:"transparent"
+                                color: Material.background
                                 z: -1
                                 border.color: "steelblue"
-
                             }
                         }
                     }
@@ -578,6 +579,7 @@ Rectangle {
                     id:rectabviewNR_nonlineareqt
                     width: parent.width
                     height: 175
+                    color: Material.background
                     HorizontalHeaderView {
                         id: horizontalHeaderNR_nonlineareqt
                         anchors.left: tabviewNR_nonlineareqt.left
@@ -627,6 +629,7 @@ Rectangle {
                             readOnly : true
                             selectByMouse: true
                             renderType: Text.NativeRendering
+                            color: Material.foreground
                             onTextEdited: {
                                 model.display = text
                             }
@@ -638,11 +641,9 @@ Rectangle {
                                 anchors.fill: parent
                                 height: textItemxiNR_nonlineareqt.implicitHeight
                                 width: textItemxiNR_nonlineareqt.implicitWidth
-                                ///width: parent.width/2
-                                color:"transparent"
+                               color: Material.background
                                 z: -1
                                 border.color: "steelblue"
-
                             }
                         }
                     }
@@ -652,6 +653,7 @@ Rectangle {
                     id:rectabviewSEC_nonlineareqt
                     width: parent.width
                     height: 175
+                   color: Material.background
                     HorizontalHeaderView {
                         id: horizontalHeaderSEC_nonlineareqt
                         anchors.left: tabviewSEC_nonlineareqt.left
@@ -700,6 +702,7 @@ Rectangle {
                             readOnly : true
                             selectByMouse: true
                             renderType: Text.NativeRendering
+                            color: Material.foreground
                             onTextEdited: {
                                 model.display = text
                             }
@@ -711,8 +714,7 @@ Rectangle {
                                 anchors.fill: parent
                                 height: textItemxiSEC_nonlineareqt.implicitHeight
                                 width: textItemxiSEC_nonlineareqt.implicitWidth
-                                ///width: parent.width/2
-                                color:"transparent"
+                              color: Material.background
                                 z: -1
                                 border.color: "steelblue"
 
@@ -725,6 +727,7 @@ Rectangle {
                     id:rectabviewBS_nonlineareqt
                     width: parent.width
                     height: 175
+                   color: Material.background
                     HorizontalHeaderView {
                         id: horizontalHeaderBS_nonlineareqt
                         anchors.left: tabviewBS_nonlineareqt.left
@@ -775,6 +778,7 @@ Rectangle {
                             readOnly : true
                             selectByMouse: true
                             renderType: Text.NativeRendering
+                            color: Material.foreground
                             onTextEdited: {
                                 model.display = text
                             }
@@ -786,8 +790,7 @@ Rectangle {
                                 anchors.fill: parent
                                 height: textItemxiBS_nonlineareqt.implicitHeight
                                 width: textItemxiBS_nonlineareqt.implicitWidth
-                                ///width: parent.width/2
-                                color:"transparent"
+                              color: Material.background
                                 z: -1
                                 border.color: "steelblue"
 
@@ -800,6 +803,7 @@ Rectangle {
                     id:rectabviewRF_nonlineareqt
                     width: parent.width
                     height: 175
+                    color: Material.background
                     HorizontalHeaderView {
                         id: horizontalHeaderRF_nonlineareqt
                         anchors.left: tabviewRF_nonlineareqt.left
@@ -851,6 +855,7 @@ Rectangle {
                             readOnly : true
                             selectByMouse: true
                             renderType: Text.NativeRendering
+                            color: Material.foreground
                             onTextEdited: {
                                 model.display = text
                             }
@@ -862,8 +867,7 @@ Rectangle {
                                 anchors.fill: parent
                                 height: textItemxiRF_nonlineareqt.implicitHeight
                                 width: textItemxiRF_nonlineareqt.implicitWidth
-                                ///width: parent.width/2
-                                color:"transparent"
+                               color: Material.background
                                 z: -1
                                 border.color: "steelblue"
 

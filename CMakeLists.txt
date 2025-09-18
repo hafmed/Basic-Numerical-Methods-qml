@@ -12,11 +12,11 @@
 
 cmake_minimum_required(VERSION 3.16)
 
-project(basic_numerical_methods_qml VERSION 1.6.9 LANGUAGES CXX)
+project(basic_numerical_methods_qml VERSION 1.7.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Charts Core Gui Qml Quick)
+find_package(Qt6 REQUIRED COMPONENTS Charts Core Gui Qml Quick QuickControls2)
 
 qt_standard_project_setup(REQUIRES 6.5)
 
@@ -49,6 +49,7 @@ target_link_libraries(appbasic_numerical_methods_qml PUBLIC
     Qt::Gui
     Qt::Qml
     Qt::Quick
+    Qt6::QuickControls2
 )
 
 qt_add_qml_module(appbasic_numerical_methods_qml

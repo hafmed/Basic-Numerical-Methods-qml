@@ -13,12 +13,14 @@ import QtQuick.Layouts
 ///------------------------------------------------------
 Item {
     id: app
-    width: 750
-    height: 750
+    width: 410
+    height: 650
     LayoutMirroring.enabled: false
     LayoutMirroring.childrenInherit: false
-    Material.theme: Material.Dark
-    Material.accent: Material.Purple
+
+    Material.accent: Material.System////Material.System/////Yellow   /////DeepOrange
+
+    Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
 
     Connections {
         target: Qt.application
@@ -45,6 +47,7 @@ Item {
         title: "Basic Numerical Methods ver "+appVer
         anchors.centerIn: Overlay.overlay
         width: parent.width
+        Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
         Text {
             id:textfirstuseofappdialog_tpMain
             width: parent.width
@@ -53,6 +56,7 @@ Item {
             font.bold : true
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
+            color: Material.foreground
         }
         standardButtons: Dialog.Ok
         onAccepted: {
@@ -62,6 +66,7 @@ Item {
 
     Settings {
         id: settings
+        property string themeofapp
         property bool firstuseofapp:true
         property int scopeViewcount
         property int comboxballcurrentIndex_tp1
@@ -146,8 +151,11 @@ Item {
 
 
     }
-    property string appVer:"1.6.9"
+    property string appVer:"1.7.0"
     ///property bool firstuseofapp
+    /////--HAF 5-9-2025-----------------
+    property string themeofapp: "Drak"
+    /////------------------------------
     property int scopeViewcount:scopeView.count
     property int tabBarcurrentIndex: 0
     property int comboxballcurrentIndex_tp1: 1
@@ -269,9 +277,8 @@ Item {
     property bool radiobutton1ischecked_polynoapproxi
     property bool radiobutton2ischecked_polynoapproxi
 
-
-
     function savesettings() {
+        settings.themeofapp=themeofapp
         ///settings.firstuseofapp=firstuseofapp
         settings.comboxballcurrentIndex_tp1=comboxballcurrentIndex_tp1
         ///---nonlineareqt---
@@ -352,9 +359,9 @@ Item {
 
     }
     function loadsettings() {
+        themeofapp=settings.themeofapp
         ///firstuseofapp=settings.firstuseofapp
         comboxballcurrentIndex_tp1=settings.comboxballcurrentIndex_tp1
-
         ///---nonlineareqt---
         fx_nonlineareqt=settings.fx_nonlineareqt
         gxPF_nonlineareqt=settings.gxPF_nonlineareqt
@@ -433,6 +440,7 @@ Item {
 
     }
     function loaddefaultsettings() {
+        themeofapp="Dark"
         /// firstuseofapp=true
         tabBarcurrentIndex= 0
         ///---nonlineareqt---
@@ -551,12 +559,23 @@ Item {
             text: qsTr("Load default settings")
             onTriggered: loaddefaultsettingsDialog.open()
         }
+        MenuItem {
+            text: themeofapp=="Dark"? qsTr("Switch to theme Light"):qsTr("Switch to theme Dark")
+            onTriggered:{
+                if (themeofapp=="Dark"){
+                    themeofapp="Light"
+                }else if(themeofapp=="Light"){
+                    themeofapp="Dark"
+                }
+            }
+        }
     }
 
     Dialog {
         id: aboutappDialog
         title: "Basic Numerical Methods ver "+appVer
         anchors.centerIn: Overlay.overlay
+        Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
         Text {
             id:textaboutdialog_tp
             width: parent.width
@@ -565,6 +584,8 @@ Item {
             font.bold : true
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
+            linkColor: "green"
+            color: Material.foreground
             onLinkActivated: function (link) { return Qt.openUrlExternally(link)
             }
         }
@@ -575,6 +596,7 @@ Item {
         id: firstuseofappDialog
         title: "Basic Numerical Methods ver "+appVer
         anchors.centerIn: Overlay.overlay
+        Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
         Text {
             id:textfirstuseofappdialog_tp
             width: parent.width
@@ -582,9 +604,10 @@ Item {
                   "If you found any bug, please contact me in e-mail: <a href=\"mailto:thakir.dz@gmail.com?subject=About%20Basic%20Numerical%20Methods%20(Ver: "+appVer+")%20 On " +Qt.platform.os+" \">thakir.dz@gmail.com</a>"
             wrapMode: Text.Wrap
             font.bold : true
+            color: Material.foreground
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            /// linkColor: "#ffffff"
+            linkColor: "green"
             onLinkActivated: function (link) { return Qt.openUrlExternally(link)
             }
         }
@@ -614,12 +637,14 @@ Item {
         id: loaddefaultsettingsDialog
         title: "Basic Numerical Methods ver "+appVer
         anchors.centerIn: Overlay.overlay
+        Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
         Text {
             id:textdialog_tp
             width: parent.width
             text:  qsTr("You must close and re-open the application to load default settings")
             wrapMode: Text.Wrap
             font.bold : true
+            color: Material.foreground
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         }
@@ -632,12 +657,12 @@ Item {
         id:rowtp1
         width: parent.width
         anchors.top: toolBar.bottom
-        height: 150
+        height: 115
         Rectangle {
             id:rect
             width: parent.width-imagelogouniv_tp1.width
-            height: 150
-            color:"transparent"
+            height: parent.height
+            color: Material.dropShadowColor
             ListModel {
                 id: nameModel
                 ListElement { file: "images/fig_Tab1.jpg"
@@ -662,7 +687,7 @@ Item {
                     scale: PathView.scale
                     Image { //--> collapse
                         anchors.horizontalCenter: delegateText.horizontalCenter
-                        source: model.file; width: 250; height: 250; smooth: true
+                        source: model.file; width: 201; height: 201; smooth: true
                         fillMode: Image.PreserveAspectFit
                     }//<-- collapse
                     Text {//--> collapse
@@ -681,7 +706,7 @@ Item {
                 onCurrentIndexChanged: tabBarcurrentIndex=pathView.currentIndex
                 path: Path {
                     // Front
-                    startX: 250; startY: 90
+                    startX: 201; startY: 50
                     PathAttribute { name: "opacity"; value: 1.0 }
                     PathAttribute { name: "scale"; value: 1.0 }
                     PathAttribute { name: "z"; value: 0 }
@@ -694,7 +719,7 @@ Item {
                     PathAttribute { name: "z"; value: -1 }
 
                     // Top
-                    PathCubic { x: 150; y: 20; control1X: 50; control1Y: 35
+                    PathCubic { x: 150; y: 50; control1X: 50; control1Y: 35
                         control2X: 100; control2Y: 20 }
                     PathAttribute { name: "opacity"; value: 0.25 }
                     PathAttribute { name: "scale"; value: 0.25 }
@@ -716,23 +741,31 @@ Item {
         }
         Column {
             width: parent.width/4
-            height: 750
-            Image {
-                id: imagelogouniv_tp1
+            height: rect.height
+            Rectangle {
+                id:rect1
                 width: parent.width
-                smooth: true
-                fillMode: Image.PreserveAspectFit
-                source: "images/log_universite_SAIDA.png"
-            }
-            Text {
-                id: delegateText5
-                width: parent.width
-                text: nameModel.get(tabBarcurrentIndex).name
-                font.bold: true
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-                color: "white"
-                wrapMode: Text.Wrap
+                height: parent.height
+                color: Material.dropShadowColor
+                Image {
+                    id: imagelogouniv_tp1
+                    width: parent.width
+                    height: parent.height-delegateText5.height
+                    smooth: true
+                    fillMode: Image.PreserveAspectFit
+                    source: "images/log_universite_SAIDA.png"
+                }
+                Text {
+                    id: delegateText5
+                    anchors.top: imagelogouniv_tp1.bottom
+                    width: parent.width
+                    text: nameModel.get(tabBarcurrentIndex).name
+                    font.bold: true
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    color: Material.accent
+                    wrapMode: Text.Wrap
+                }
             }
         }
     }

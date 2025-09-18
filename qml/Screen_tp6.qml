@@ -10,11 +10,10 @@ Rectangle {
     id:root
     width: app.width
     height: app.height-rect.height
-    color:"transparent"
-    Material.theme: Material.Dark
-    Material.accent: Material.Pink
+    color: Material.background
+    Material.background:Material.background
 
-    property string colorfx_polynoapproxi: "white"
+    property string colorfx_polynoapproxi: Material.background
 
     function columnWidth(column) {
         if (column >= nbrePts_polynoapproxi+2)
@@ -432,7 +431,7 @@ Rectangle {
                                     anchors.fill: parent
                                     height: textxi_polynoapproxi.implicitHeight
                                     width: textxi_polynoapproxi.implicitWidth
-                                    color:"transparent"
+                                    color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
@@ -458,7 +457,7 @@ Rectangle {
                                     anchors.fill: parent
                                     height: textyi_polynoapproxi.implicitHeight
                                     width: textyi_polynoapproxi.implicitWidth
-                                    color:"transparent"
+                                    color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
@@ -481,7 +480,7 @@ Rectangle {
                                     anchors.fill: parent
                                     height: textdfxi1_polynoapproxi.implicitHeight
                                     width: textdfxi1_polynoapproxi.implicitWidth
-                                    color:"transparent"
+                                    color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
@@ -504,7 +503,7 @@ Rectangle {
                                     anchors.fill: parent
                                     height: textdfxi2_polynoapproxi.implicitHeight
                                     width: textdfxi2_polynoapproxi.implicitWidth
-                                    color:"transparent"
+                                    color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
@@ -527,7 +526,7 @@ Rectangle {
                                     anchors.fill: parent
                                     height: textdfxi3_polynoapproxi.implicitHeight
                                     width: textdfxi3_polynoapproxi.implicitWidth
-                                    color:"transparent"
+                                    color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
@@ -550,7 +549,7 @@ Rectangle {
                                     anchors.fill: parent
                                     height: textdfxi4_polynoapproxi.implicitHeight
                                     width: textdfxi4_polynoapproxi.implicitWidth
-                                    color:"transparent"
+                                    color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
@@ -573,7 +572,7 @@ Rectangle {
                                     anchors.fill: parent
                                     height: textdfxi5_polynoapproxi.implicitHeight
                                     width: textdfxi5_polynoapproxi.implicitWidth
-                                    color:"transparent"
+                                    color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
@@ -596,7 +595,7 @@ Rectangle {
                                     anchors.fill: parent
                                     height: textdfxi6_polynoapproxi.implicitHeight
                                     width: textdfxi6_polynoapproxi.implicitWidth
-                                    color:"transparent"
+                                    color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
@@ -619,7 +618,7 @@ Rectangle {
                                     anchors.fill: parent
                                     height: textdfxi7_polynoapproxi.implicitHeight
                                     width: textdfxi7_polynoapproxi.implicitWidth
-                                    color:"transparent"
+                                    color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
@@ -642,7 +641,7 @@ Rectangle {
                                     anchors.fill: parent
                                     height: textdfxi8_polynoapproxi.implicitHeight
                                     width: textdfxi8_polynoapproxi.implicitWidth
-                                    color:"transparent"
+                                    color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
@@ -665,7 +664,7 @@ Rectangle {
                                     anchors.fill: parent
                                     height: textdfxi9_polynoapproxi.implicitHeight
                                     width: textdfxi9_polynoapproxi.implicitWidth
-                                    color:"transparent"
+                                    color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }

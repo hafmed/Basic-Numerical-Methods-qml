@@ -9,11 +9,9 @@ import QtQuick.Layouts
 Rectangle {
     width: app.width
     height: app.height-rect.height
-    color:"transparent"
-    Material.theme: Material.Dark
-    Material.accent: Material.Pink
-
-    property string colorfx_inteqt: "white"
+    color: Material.background
+    Material.background:Material.background
+    property string colorfx_inteqt: Material.background
 
     function fmethodeindex_inteqt()
     {
@@ -59,6 +57,7 @@ Rectangle {
         id: dialogMessageErrorFparser
         title: "Basic Numerical Methods ver "+appVer
         anchors.centerIn: Overlay.overlay
+        Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
         width: parent.width
         Text {
             id:textfirstuseofappdialog_tp
@@ -66,6 +65,7 @@ Rectangle {
             text: "Error"
             wrapMode: Text.Wrap
             font.bold : true
+            color: Material.foreground
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         }
@@ -245,6 +245,7 @@ Rectangle {
                                     readOnly : true
                                     selectByMouse: true
                                     ///renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIj_inteqt.savexiyiIjtableModel1_inteqt()
@@ -254,7 +255,7 @@ Rectangle {
                                         height: textxi_inteqt.implicitHeight
                                         width: textxi_inteqt.implicitWidth
                                         ///width: parent.width/2
-                                        color:"transparent"
+                                        color: Material.background
                                         z: -1
                                         border.color: "steelblue"
                                     }
@@ -271,6 +272,7 @@ Rectangle {
                                     padding: 9
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     onEditingFinished: {
                                         model.display = text
                                         tabviewxiyiIj_inteqt.savexiyiIjtableModel1_inteqt()
@@ -299,6 +301,7 @@ Rectangle {
                                     readOnly : true
                                     selectByMouse: true
                                     renderType: Text.NativeRendering
+                                    color: Material.foreground
                                     Rectangle {
                                         anchors.fill: parent
                                         height: textIj_inteqt.implicitHeight
@@ -337,7 +340,7 @@ Rectangle {
                 width: parent.width-5
                 placeholderText: qsTr("y=f(x)")
                 text: settings.fx_inteqt
-                color: colorfx_inteqt
+                color: colorfx_inteqt=="white"?  themeofapp==="Dark"? "white":"black" :"red"
                 onTextChanged: {if (textfx_inteqt.text==="nan" || textfx_inteqt.text==="NaN") textfx_inteqt.text=fx_inteqt ;
                     fx_inteqt=textfx_inteqt.text;
                     colorfx_inteqt=CalculHaf.textChangedinfx_integ(fx_inteqt)
@@ -493,6 +496,7 @@ Rectangle {
                 readOnly : true
                 selectByMouse: true
                 renderType: Text.NativeRendering
+                color: Material.foreground
                 placeholderText: qsTr("Results")
                 ///text: settings.nbrePtsfx_inteqt
             }

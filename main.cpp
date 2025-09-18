@@ -9,23 +9,19 @@
 #include <QQmlEngine>
 #include <QQuickView>
 
-
 int main(int argc, char *argv[])
 {
     // Qt Charts uses Qt Graphics View Framework for drawing, therefore QApplication must be used.
     QApplication app(argc, argv);
 
-    QApplication::setOrganizationDomain(QStringLiteral("hafsoftdz"));
-    QApplication::setOrganizationName(QStringLiteral("hafsoftdz"));
+    QApplication::setOrganizationDomain(QStringLiteral("org.hafsoftdz"));
+    QApplication::setOrganizationName(QStringLiteral("org.hafsoftdz"));
     QApplication::setApplicationName(QStringLiteral("basic_numerical_methods"));
 
     QGuiApplication::setDesktopFileName(QStringLiteral("org.flatpak.basic_numerical_methods"));
 
-    // qputenv("QT_QUICK_CONTROLS_STYLE", QByteArray("Material"));
-    // qputenv("QT_QUICK_CONTROLS_MATERIAL_THEME", QByteArray("Dark"));
-    // qputenv("QT_QUICK_CONTROLS_MATERIAL_ACCENT", QByteArray("Orange"));
     app.setWindowIcon(QIcon(":/qml/images/logBNM256x256.jpg"));
-    app.setOrganizationName("hafsoftdz");
+    app.setOrganizationName("org.hafsoftdz");
     app.setOrganizationDomain("app");
 
     // OpenGL backend is required to make AbstractSeries.useOpenGL work.
@@ -38,13 +34,13 @@ int main(int argc, char *argv[])
 
     QQuickView viewer;
 
-    // The following are needed to make examples run without having to install the module
-    // in desktop environments.
-    #ifdef Q_OS_WIN
-        QString extraImportPath(QStringLiteral("%1/../../../../%2"));
-    #else
-        QString extraImportPath(QStringLiteral("%1/../../../%2"));
-    #endif
+// The following are needed to make examples run without having to install the module
+// in desktop environments.
+#ifdef Q_OS_WIN
+    QString extraImportPath(QStringLiteral("%1/../../../../%2"));
+#else
+    QString extraImportPath(QStringLiteral("%1/../../../%2"));
+#endif
     viewer.engine()->addImportPath(extraImportPath.arg(QGuiApplication::applicationDirPath(),
                                                        QString::fromLatin1("qml")));
     QObject::connect(viewer.engine(), &QQmlEngine::quit, &viewer, &QWindow::close);
