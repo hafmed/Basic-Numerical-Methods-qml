@@ -8,7 +8,7 @@ import QtQuick.Layouts
 
 Rectangle {
     width: app.width
-    height: app.height-rect.height
+    height: app.height-rect.height-35
     color: Material.background
     Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
     Plotfx{
@@ -58,7 +58,7 @@ Rectangle {
     }
     Dialog {
         id: dialogMessageErrorFparser
-        title: "Basic Numerical Methods ver "+appVer
+        title: "Basic Numerical Methods ("+appVer+")"
         anchors.centerIn: Overlay.overlay
         width: parent.width
        Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
@@ -500,11 +500,12 @@ Rectangle {
             StackLayout {
                 id: view3
                 width: parent.width
+                height: app.height
                 currentIndex: tabbar1_nonlineareqt.currentIndex
                 Rectangle {
                     id:rectabviewPF_nonlineareqt
                     width: parent.width
-                    height: 175
+                    height: implicitContentHeight
                     color: Material.background
                     HorizontalHeaderView {
                         id: horizontalHeaderPF_nonlineareqt
@@ -578,7 +579,7 @@ Rectangle {
                 Rectangle {
                     id:rectabviewNR_nonlineareqt
                     width: parent.width
-                    height: 175
+                    height: implicitContentHeight
                     color: Material.background
                     HorizontalHeaderView {
                         id: horizontalHeaderNR_nonlineareqt
@@ -652,7 +653,7 @@ Rectangle {
                 Rectangle {
                     id:rectabviewSEC_nonlineareqt
                     width: parent.width
-                    height: 175
+                    height: implicitContentHeight
                    color: Material.background
                     HorizontalHeaderView {
                         id: horizontalHeaderSEC_nonlineareqt
@@ -726,7 +727,7 @@ Rectangle {
                 Rectangle {
                     id:rectabviewBS_nonlineareqt
                     width: parent.width
-                    height: 175
+                    height: implicitContentHeight
                    color: Material.background
                     HorizontalHeaderView {
                         id: horizontalHeaderBS_nonlineareqt
@@ -802,7 +803,7 @@ Rectangle {
                 Rectangle {
                     id:rectabviewRF_nonlineareqt
                     width: parent.width
-                    height: 175
+                    height: implicitContentHeight
                     color: Material.background
                     HorizontalHeaderView {
                         id: horizontalHeaderRF_nonlineareqt

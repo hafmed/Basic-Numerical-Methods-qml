@@ -44,7 +44,7 @@ Item {
     }
     Dialog {
         id: dialogMessageErrorFparserMain
-        title: "Basic Numerical Methods ver "+appVer
+        title: "Basic Numerical Methods ("+appVer+")"
         anchors.centerIn: Overlay.overlay
         width: parent.width
         Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
@@ -151,7 +151,7 @@ Item {
 
 
     }
-    property string appVer:"1.7.0"
+    property string appVer:"1.7.5"
     ///property bool firstuseofapp
     /////--HAF 5-9-2025-----------------
     property string themeofapp: "Drak"
@@ -573,7 +573,7 @@ Item {
 
     Dialog {
         id: aboutappDialog
-        title: "Basic Numerical Methods ver "+appVer
+        title: "Basic Numerical Methods ("+appVer+")"
         anchors.centerIn: Overlay.overlay
         Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
         Text {
@@ -594,7 +594,7 @@ Item {
     }
     Dialog {
         id: firstuseofappDialog
-        title: "Basic Numerical Methods ver "+appVer
+        title: "Basic Numerical Methods ("+appVer+")"
         anchors.centerIn: Overlay.overlay
         Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
         Text {
@@ -635,7 +635,7 @@ Item {
 
     Dialog {
         id: loaddefaultsettingsDialog
-        title: "Basic Numerical Methods ver "+appVer
+        title: "Basic Numerical Methods ("+appVer+")"
         anchors.centerIn: Overlay.overlay
         Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
         Text {
@@ -704,6 +704,11 @@ Item {
                 focus: true
                 id: pathView
                 onCurrentIndexChanged: tabBarcurrentIndex=pathView.currentIndex
+                MouseArea {
+                    width: app.width
+                    height:  parent.height
+                    onClicked: pathView.incrementCurrentIndex()
+                }
                 path: Path {
                     // Front
                     startX: 201; startY: 50

@@ -8,7 +8,7 @@ import QtQuick.Layouts
 
 Rectangle {
     width: app.width
-    height: app.height-rect.height
+    height: app.height-rect.height-35
     color: Material.background
     Material.background:Material.background
     property string colorfxy_edoeqt: Material.background
@@ -35,7 +35,7 @@ Rectangle {
     }
     Dialog {
         id: dialogMessageErrorFparser
-        title: "Basic Numerical Methods ver "+appVer
+        title: "Basic Numerical Methods ("+appVer+")"
         anchors.centerIn: Overlay.overlay
         width: parent.width
         Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
@@ -218,6 +218,8 @@ Rectangle {
                         inputMethodHints: Qt.ImhDigitsOnly
                         onTextChanged: {if (textNbreNbreDecim_edoeqt.text==="nan" || textNbreNbreDecim_edoeqt.text==="NaN") textNbreNbreDecim_edoeqt.text=nbreDecim_edoeqt ;
                             nbreDecim_edoeqt=textNbreNbreDecim_edoeqt.text;
+                            dx_edoeqt=(b_edoeqt-a_edoeqt)/(nbrePts_edoeqt-1);
+                            textdx_edoeqt.text=parseFloat(dx_edoeqt).toFixed(nbreDecim_edoeqt);
                         }
                     }
                 }
@@ -227,6 +229,7 @@ Rectangle {
                 width: parent.width
                 text: "Calculate"
                 onClicked: {
+                    fmethodeindex_edoeqt()
                     if (radiobutton1ischecked_edoeqt){
                         tableModelxi_edoeqt.clear()
                         stackLayoutIndex_edoeqt=1
@@ -292,7 +295,7 @@ Rectangle {
             Rectangle {
                 id:rectabview_edoeqt
                 width: parent.width
-                height: nbrePts_edoeqt*45
+                height: app.height
                 color: Material.background
                 HorizontalHeaderView {
                     id: horizontalHeader_edoeqt
@@ -364,5 +367,7 @@ Rectangle {
 
     Component.onCompleted: {
         radiobutton1_edoeqt.checked=true
+        console.log(textNbreNbreDecim_edoeqt.text);
+        textdx_edoeqt.text=parseFloat(dx_edoeqt).toFixed(nbreDecim_edoeqt);
     }
 }

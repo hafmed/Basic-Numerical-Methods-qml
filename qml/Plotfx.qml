@@ -45,7 +45,7 @@ Dialog {
                 }
                 Dialog {
                     id: dialogMessageErrorFparser
-                    title: "Basic Numerical Methods ver "+appVer
+                    title: "Basic Numerical Methods ("+appVer+")"
                     anchors.centerIn: Overlay.overlay
                     width: parent.width
                     Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light

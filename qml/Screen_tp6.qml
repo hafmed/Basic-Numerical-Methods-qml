@@ -9,7 +9,7 @@ import QtQuick.Layouts
 Rectangle {
     id:root
     width: app.width
-    height: app.height-rect.height
+    height: app.height-rect.height-35
     color: Material.background
     Material.background:Material.background
 
@@ -351,7 +351,7 @@ Rectangle {
             Rectangle {
                 id:rectabdatan_polynoapproxi
                 width: parent.width-17
-                height: 250
+                height: spinBoxNbrepts_polynoapproxi.value*65
                 color: "transparent"
                 HorizontalHeaderView {
                     id: horizontalHeaderdata_polynoapproxi

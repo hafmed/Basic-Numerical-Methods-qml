@@ -8,7 +8,7 @@ import QtQuick.Layouts
 
 Rectangle {
     width: app.width
-    height: app.height-rect.height
+    height: app.height-rect.height-35
     color: Material.background
     Material.background:Material.background
 
@@ -46,7 +46,7 @@ Rectangle {
     }
     Dialog {
         id: dialogMessageErrorFparser
-        title: "Basic Numerical Methods ver "+appVer
+        title: "Basic Numerical Methods ("+appVer+")"
         anchors.centerIn: Overlay.overlay
         Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
         width: parent.width
@@ -410,6 +410,7 @@ Rectangle {
             StackLayout {
                 id: stackLayout_nonlinearsyst
                 width: parent.width
+                height: app.height
                 currentIndex: methodeindex_nonlinearsyst
                 StackLayout {
                     id: stackLayoutPF_nonlinearsyst

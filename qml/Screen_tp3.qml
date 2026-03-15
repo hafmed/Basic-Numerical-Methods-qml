@@ -8,7 +8,7 @@ import QtQuick.Layouts
 
 Rectangle {
     width: app.width
-    height: app.height-rect.height
+    height: app.height-rect.height-35
     color: Material.background
     Material.background:Material.background
     property string colorfx_inteqt: Material.background
@@ -55,7 +55,7 @@ Rectangle {
     }
     Dialog {
         id: dialogMessageErrorFparser
-        title: "Basic Numerical Methods ver "+appVer
+        title: "Basic Numerical Methods ("+appVer+")"
         anchors.centerIn: Overlay.overlay
         Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
         width: parent.width
@@ -137,6 +137,7 @@ Rectangle {
                         to: 100
                         editable: true
                         onValueChanged:{
+                            textAffichageResultats_inteqt.clear()
                             spinBoxNbrePtsfx_inteqt.value=spinBoxNbrePtsTab_inteqt.value
                             for (let i = 0; i < 10 ; i++) {
                                 nbrePtsTab_inteqt=spinBoxNbrePtsTab_inteqt.value;
@@ -174,7 +175,7 @@ Rectangle {
                 Rectangle {
                     id:rectabview1_inteqt
                     width: parent.width-10
-                    height: 250
+                    height: spinBoxNbrePtsTab_inteqt.value*70
                     color: "transparent"
                     HorizontalHeaderView {
                         id: horizontalHeader2_tp5

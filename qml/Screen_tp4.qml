@@ -8,7 +8,7 @@ import QtQuick.Layouts
 
 Rectangle {
     width: app.width
-    height: app.height-rect.height
+    height: app.height-rect.height-35
     color: Material.background
     Material.background:Material.background
 
@@ -91,7 +91,7 @@ Rectangle {
     }
     Dialog {
         id: dialogMessageErrorFparser
-        title: "Basic Numerical Methods ver "+appVer
+        title: "Basic Numerical Methods ("+appVer+")"
         anchors.centerIn: Overlay.overlay
         Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
         width: parent.width
@@ -361,13 +361,14 @@ Rectangle {
             StackLayout {
                 id: stackLayoutrectabdata_linearsyst
                 width: parent.width-15
+                height: spinBoxNbreeqt_linearsyst.value*75
                 currentIndex: spinBoxNbreeqtcurrentValue_linearsyst
 
                 Rectangle {
                     id:rectabdatan2_linearsyst
                     width: parent.width
-                    height: 250
-                    color: "transparent"
+                    height: implicitContentHeight
+                    color: Material.background
                     HorizontalHeaderView {
                         id: horizontalHeaderdatan2_linearsyst
                         anchors.left: tabviewxiyiIjdatan2_linearsyst.left
@@ -512,8 +513,8 @@ Rectangle {
                 Rectangle {
                     id:rectabdatan3_linearsyst
                     width: parent.width
-                    height: 250
-                    color: "transparent"
+                    height: implicitContentHeight
+                    color: Material.background
                     HorizontalHeaderView {
                         id: horizontalHeaderdatan3_linearsyst
                         anchors.left: tabviewxiyiIjdatan3_linearsyst.left
@@ -687,8 +688,8 @@ Rectangle {
                 Rectangle {
                     id:rectabdatan4_linearsyst
                     width: parent.width
-                    height: 250
-                    color: "transparent"
+                    height: implicitContentHeight
+                    color: Material.background
                     HorizontalHeaderView {
                         id: horizontalHeaderdatan4_linearsyst
                         anchors.left: tabviewxiyiIjdatan4_linearsyst.left
@@ -889,8 +890,8 @@ Rectangle {
                 Rectangle {
                     id:rectabdatan5_linearsyst
                     width: parent.width
-                    height: 250
-                    color: "transparent"
+                    height: implicitContentHeight
+                    color: Material.background
                     HorizontalHeaderView {
                         id: horizontalHeaderdatan5_linearsyst
                         anchors.left: tabviewxiyiIjdatan5_linearsyst.left
@@ -1244,6 +1245,7 @@ Rectangle {
             StackLayout {
                 id: stackLayoutrectabMatriTriaSupResultsGSJaco_linearsyst
                 width: parent.width-15
+                height: spinBoxNbreeqt_linearsyst.value*75
                 currentIndex: methodeindex_linearsyst==0? 0:1
 
                 StackLayout {
@@ -1254,8 +1256,8 @@ Rectangle {
                     Rectangle {
                         id:rectabMatriTriaSupn2_linearsyst
                         width: parent.width
-                        height: 250
-                        color: "transparent"
+                        height: implicitContentHeight
+                        color: Material.background
                         HorizontalHeaderView {
                             id: horizontalHeaderMatriTriaSupn2_linearsyst
                             anchors.left: tabviewxiyiIjMatriTriaSupn2_linearsyst.left
@@ -1376,8 +1378,8 @@ Rectangle {
                     Rectangle {
                         id:rectabMatriTriaSupn3_linearsyst
                         width: parent.width
-                        height: 250
-                        color: "transparent"
+                        height: implicitContentHeight
+                        color: Material.background
                         HorizontalHeaderView {
                             id: horizontalHeaderMatriTriaSupn3_linearsyst
                             anchors.left: tabviewxiyiIjMatriTriaSupn3_linearsyst.left
@@ -1521,8 +1523,8 @@ Rectangle {
                     Rectangle {
                         id:rectabMatriTriaSupn4_linearsyst
                         width: parent.width
-                        height: 250
-                        color: "transparent"
+                        height: implicitContentHeight
+                        color: Material.background
                         HorizontalHeaderView {
                             id: horizontalHeaderMatriTriaSupn4_linearsyst
                             anchors.left: tabviewxiyiIjMatriTriaSupn4_linearsyst.left
@@ -1690,8 +1692,8 @@ Rectangle {
                     Rectangle {
                         id:rectabMatriTriaSupn5_linearsyst
                         width: parent.width
-                        height: 250
-                        color: "transparent"
+                        height: implicitContentHeight
+                        color: Material.background
                         HorizontalHeaderView {
                             id: horizontalHeaderMatriTriaSupn5_linearsyst
                             anchors.left: tabviewxiyiIjMatriTriaSupn5_linearsyst.left
@@ -1890,7 +1892,7 @@ Rectangle {
                         id:rectabResultsGSJacon2_linearsyst
                         width: parent.width
                         height: 250
-                        color: "transparent"
+                        color: Material.background
                         HorizontalHeaderView {
                             id: horizontalHeaderResultsGSJacon2_linearsyst
                             anchors.left: tabviewxiyiIjResultsGSJacon2_linearsyst.left
@@ -1951,7 +1953,7 @@ Rectangle {
                                     anchors.fill: parent
                                     height: textai1ResultsGSJaco_linearsystn2.implicitHeight
                                     width: textai1ResultsGSJaco_linearsystn2.implicitWidth
-                                    ///color: Material.background
+                                    color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
@@ -1963,7 +1965,7 @@ Rectangle {
                         id:rectabResultsGSJacon3_linearsyst
                         width: parent.width
                         height: 250
-                        color: "transparent"
+                        color: Material.background
                         HorizontalHeaderView {
                             id: horizontalHeaderResultsGSJacon3_linearsyst
                             anchors.left: tabviewxiyiIjResultsGSJacon3_linearsyst.left
@@ -2025,7 +2027,7 @@ Rectangle {
                                     anchors.fill: parent
                                     height: textai1ResultsGSJaco_linearsystn3.implicitHeight
                                     width: textai1ResultsGSJaco_linearsystn3.implicitWidth
-                                    ///color: Material.background
+                                    color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
@@ -2037,7 +2039,7 @@ Rectangle {
                         id:rectabResultsGSJacon4_linearsyst
                         width: parent.width
                         height: 250
-                        color: "transparent"
+                        color: Material.background
                         HorizontalHeaderView {
                             id: horizontalHeaderResultsGSJacon4_linearsyst
                             anchors.left: tabviewxiyiIjResultsGSJacon4_linearsyst.left
@@ -2100,7 +2102,7 @@ Rectangle {
                                     anchors.fill: parent
                                     height: textai1ResultsGSJaco_linearsystn4.implicitHeight
                                     width: textai1ResultsGSJaco_linearsystn4.implicitWidth
-                                    ///color: Material.background
+                                    color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
@@ -2112,7 +2114,7 @@ Rectangle {
                         id:rectabResultsGSJacon5_linearsyst
                         width: parent.width
                         height: 250
-                        color: "transparent"
+                        color: Material.background
                         HorizontalHeaderView {
                             id: horizontalHeaderResultsGSJacon5_linearsyst
                             anchors.left: tabviewxiyiIjResultsGSJacon5_linearsyst.left
@@ -2176,7 +2178,7 @@ Rectangle {
                                     anchors.fill: parent
                                     height: textai1ResultsGSJaco_linearsystn5.implicitHeight
                                     width: textai1ResultsGSJaco_linearsystn5.implicitWidth
-                                    ///color: Material.background
+                                    color: Material.background
                                     z: -1
                                     border.color: "steelblue"
                                 }
