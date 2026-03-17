@@ -13,5 +13,5 @@
         buildsystem: cmake-ninja
         sources:
            - type: dir
-             path: /home/hafmed/Documents/25-26/Basic-Numerical-Methods-qml-1.7.0/
+             path: /home/hafmed/Documents/25-26/Basic-Numerical-Methods-qml-1.7.7/
 

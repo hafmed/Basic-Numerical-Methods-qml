@@ -24,9 +24,9 @@ public:
     Q_INVOKABLE void hafresolutioneqtnonlineaire_dichotomie(QString fx, double a, double b,double eps,int nmax,int ndecimaux);
     Q_INVOKABLE void hafresolutioneqtnonlineaire_fausseposition(QString fx, double a, double b,double eps,int nmax,int ndecimaux);
 
-    Q_INVOKABLE void hafresolutioneqtdifferentielle_Euler_explicite(QString fxy_edoeqt, double a_edoeqt, double b_edoeqt,double dx_edoeqt,int ya_edoeqt,int nbrePts_edoeqt,int nbreDecim_edoeqt);
-    Q_INVOKABLE void hafresolutioneqtdifferentielle_Runge_Kutta(QString fxy_edoeqt, double a_edoeqt, double b_edoeqt,double dx_edoeqt,int ya_edoeqt,int nbrePts_edoeqt,int nbreDecim_edoeqt);
-    Q_INVOKABLE void hafresolutioneqtdifferentielle_Kutta_Merson(QString fxy_edoeqt, double a_edoeqt, double b_edoeqt,double dx_edoeqt,int ya_edoeqt,int nbrePts_edoeqt,int nbreDecim_edoeqt);
+    Q_INVOKABLE void hafresolutioneqtdifferentielle_Euler_explicite(QString fxy_edoeqt, double a_edoeqt, double b_edoeqt,double dx_edoeqt,double ya_edoeqt,int nbrePts_edoeqt,int nbreDecim_edoeqt);
+    Q_INVOKABLE void hafresolutioneqtdifferentielle_Runge_Kutta(QString fxy_edoeqt, double a_edoeqt, double b_edoeqt, double dx_edoeqt, double ya_edoeqt, int nbrePts_edoeqt, int nbreDecim_edoeqt);
+    Q_INVOKABLE void hafresolutioneqtdifferentielle_Kutta_Merson(QString fxy_edoeqt, double a_edoeqt, double b_edoeqt,double dx_edoeqt,double ya_edoeqt,int nbrePts_edoeqt,int nbreDecim_edoeqt);
     Q_INVOKABLE void hafafficherIntegration(QString fxintegrale, QVariantList tabArrayxiyi_inteqt, double a, double b, double ntab, double nfx, bool usefx, bool fullTableView, int ndecimaux, int method);
     Q_INVOKABLE void hafplot(QString fxplot, double a, double b,double n,int ndecimaux);
     Q_INVOKABLE void hafresolutionsysteqtlineaire_Gauss(QVariantList tabArrayxiyidata_linearsyst,int n );

@@ -674,7 +674,7 @@ void CalculHaf::hafresolutioneqtnonlineaire_fausseposition(QString fx, double a,
     }
 }
 
-void CalculHaf::hafresolutioneqtdifferentielle_Kutta_Merson(QString yprim, double a, double b,double dx_edoeqt,int ya_edoeqt,int n,int ndecimaux)
+void CalculHaf::hafresolutioneqtdifferentielle_Kutta_Merson(QString yprim, double a, double b,double dx_edoeqt,double ya_edoeqt,int n,int ndecimaux)
 {
     while(true)
     {
@@ -734,7 +734,7 @@ void CalculHaf::hafresolutioneqtdifferentielle_Kutta_Merson(QString yprim, doubl
     }
 
 }
-void CalculHaf::hafresolutioneqtdifferentielle_Runge_Kutta(QString yprim, double a, double b,double dx_edoeqt,int ya_edoeqt,int n,int ndecimaux)
+void CalculHaf::hafresolutioneqtdifferentielle_Runge_Kutta(QString yprim, double a, double b,double dx_edoeqt,double ya_edoeqt,int n,int ndecimaux)
 {
 
     while(true)
@@ -788,7 +788,7 @@ void CalculHaf::hafresolutioneqtdifferentielle_Runge_Kutta(QString yprim, double
         emit  requestXiodeeqt(i,x[i],y[i]);
     }
 }
-void CalculHaf::hafresolutioneqtdifferentielle_Euler_explicite(QString yprim, double a, double b,double dx_edoeqt,int ya_edoeqt,int n,int ndecimaux)
+void CalculHaf::hafresolutioneqtdifferentielle_Euler_explicite(QString yprim, double a, double b,double dx_edoeqt,double ya_edoeqt,int n,int ndecimaux)
 {
     while(true)
     {
