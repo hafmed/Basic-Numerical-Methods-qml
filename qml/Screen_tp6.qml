@@ -3,7 +3,6 @@ import QtQuick.Controls
 import QtCore
 import QtQuick.Controls.Material 2.12
 import Qt.labs.qmlmodels 1.0
-import QtCharts
 import QtQuick.Layouts
 
 Rectangle {
@@ -351,7 +350,7 @@ Rectangle {
             Rectangle {
                 id:rectabdatan_polynoapproxi
                 width: parent.width-17
-                height: spinBoxNbrepts_polynoapproxi.value*65
+                height: spinBoxNbrepts_polynoapproxi.value*65+19
                 color: "transparent"
                 HorizontalHeaderView {
                     id: horizontalHeaderdata_polynoapproxi

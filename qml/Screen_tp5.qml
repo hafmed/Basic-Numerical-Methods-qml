@@ -3,7 +3,6 @@ import QtQuick.Controls
 import QtCore
 import QtQuick.Controls.Material 2.12
 import Qt.labs.qmlmodels 1.0
-import QtCharts
 import QtQuick.Layouts
 
 Rectangle {

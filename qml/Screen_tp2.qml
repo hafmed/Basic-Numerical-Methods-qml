@@ -3,7 +3,6 @@ import QtQuick.Controls
 import QtCore
 import QtQuick.Controls.Material 2.12
 import Qt.labs.qmlmodels 1.0
-import QtCharts
 import QtQuick.Layouts
 
 Rectangle {
@@ -367,7 +366,7 @@ Rectangle {
 
     Component.onCompleted: {
         radiobutton1_edoeqt.checked=true
-        console.log(textNbreNbreDecim_edoeqt.text);
+        /////console.log(textNbreNbreDecim_edoeqt.text);
         textdx_edoeqt.text=parseFloat(dx_edoeqt).toFixed(nbreDecim_edoeqt);
     }
 }

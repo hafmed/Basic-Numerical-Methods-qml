@@ -151,7 +151,7 @@ Item {
 
 
     }
-    property string appVer:"1.7.7"
+    property string appVer:"1.7.9"
     ///property bool firstuseofapp
     /////--HAF 5-9-2025-----------------
     property string themeofapp: "Drak"
@@ -662,7 +662,7 @@ Item {
             id:rect
             width: parent.width-imagelogouniv_tp1.width
             height: parent.height
-            color: Material.dropShadowColor
+            color: Material.backgroundColor
             ListModel {
                 id: nameModel
                 ListElement { file: "images/fig_Tab1.jpg"
@@ -682,18 +682,30 @@ Item {
             Component {
                 id: nameDelegate
                 Column {
-                    opacity: PathView.opacity
+                    opacity: PathView.isCurrentItem ? 1 : 0.5
                     z: PathView.z
                     scale: PathView.scale
+                    // Function to generate a random hex color string
+                    function getRandomColor() {
+                        // Generate a random number between 0 and 0xFFFFFF (16777215)
+                        var randomInt = Math.floor(Math.random() * 16777215);
+                        // Convert to a hex string and pad with leading zeros if necessary
+                        var hexColor = "#" + ("000000" + randomInt.toString(16)).slice(-6).toUpperCase();
+                        return hexColor;
+                    }
+                    Rectangle {
+                        width: image.width
+                        height: rect.height
+                        border.color: getRandomColor()
+                        border.width: 5
+                        /////color: pathView.currentIndex===pathView.visibleChildren? "transparent":"red"
                     Image { //--> collapse
-                        anchors.horizontalCenter: delegateText.horizontalCenter
+                        id: image
                         source: model.file; width: 201; height: 201; smooth: true
                         fillMode: Image.PreserveAspectFit
-                    }//<-- collapse
-                    Text {//--> collapse
-                        id: delegateText
-                        //     text: model.name; font.pixelSize: 24
-                    }//<-- collapse
+                        anchors.centerIn: parent
+                    }
+                    }
                 }
             }
             //<-- slide
@@ -711,7 +723,7 @@ Item {
                 }
                 path: Path {
                     // Front
-                    startX: 201; startY: 50
+                    startX: rect.width/2; startY: 50
                     PathAttribute { name: "opacity"; value: 1.0 }
                     PathAttribute { name: "scale"; value: 1.0 }
                     PathAttribute { name: "z"; value: 0 }
@@ -731,7 +743,7 @@ Item {
                     PathAttribute { name: "z"; value: -2 }
 
                     // Right
-                    PathCubic { x: 350; y: 50; control1X: 200; control1Y: 20
+                    PathCubic { x: rect.width; y: 50; control1X: 200; control1Y: 20
                         control2X: 250; control2Y: 35 }
                     PathAttribute { name: "opacity"; value: 0.5 }
                     PathAttribute { name: "scale"; value: 0.5 }
@@ -751,7 +763,7 @@ Item {
                 id:rect1
                 width: parent.width
                 height: parent.height
-                color: Material.dropShadowColor
+                color: Material.backgroundColor
                 Image {
                     id: imagelogouniv_tp1
                     width: parent.width
