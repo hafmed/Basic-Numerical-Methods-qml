@@ -1,6 +1,6 @@
     app-id: io.github.hafmed.Basic-Numerical-Methods-qml
     runtime: org.kde.Platform
-    runtime-version: "6.9"
+    runtime-version: "6.10"
     sdk: org.kde.Sdk
     command: appbasic_numerical_methods_qml
     finish-args:
