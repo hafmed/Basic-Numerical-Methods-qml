@@ -45,8 +45,8 @@ set_target_properties(appbasic_numerical_methods_qml PROPERTIES
 )
 
 target_link_libraries(appbasic_numerical_methods_qml PUBLIC
-#     Q6t::Graphs
-    Q6t::Charts
+#     Qt6::Graphs
+    Qt6::Charts
     Qt6::Core
     Qt6::Gui
     Qt6::Qml
