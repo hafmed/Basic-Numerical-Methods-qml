@@ -16,7 +16,8 @@ project(basic_numerical_methods_qml VERSION 1.7.9 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Graphs Widgets Core Gui Qml Quick QuickControls2)
+# find_package(Qt6 REQUIRED COMPONENTS Graphs Widgets Core Gui Qml Quick QuickControls2)
+find_package(Qt6 REQUIRED COMPONENTS Charts Core Gui Qml Quick QuickControls2)
 
 qt_standard_project_setup(REQUIRES 6.5)
 
@@ -44,11 +45,12 @@ set_target_properties(appbasic_numerical_methods_qml PROPERTIES
 )
 
 target_link_libraries(appbasic_numerical_methods_qml PUBLIC
-    Qt::Graphs
-    Qt::Core
-    Qt::Gui
-    Qt::Qml
-    Qt::Quick
+#     Q6t::Graphs
+    Q6t::Charts
+    Qt6::Core
+    Qt6::Gui
+    Qt6::Qml
+    Qt6::Quick
     Qt6::QuickControls2
     Qt6::Widgets
 )
