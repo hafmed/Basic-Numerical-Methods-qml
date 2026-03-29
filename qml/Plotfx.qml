@@ -3,7 +3,8 @@ import QtQuick.Controls
 import QtCore
 import QtQuick.Controls.Material 2.12
 import Qt.labs.qmlmodels 1.0
-import QtGraphs
+// import QtGraphs
+import QtCharts
 import QtQuick.Layouts
 
 Dialog {
@@ -45,7 +46,7 @@ Dialog {
                 }
                 Dialog {
                     id: dialogMessageErrorFparser
-                    title: "Basic Numerical Methods ("+appVer+")"
+                    title: "Basic Numerical Methods ver "+appVer
                     anchors.centerIn: Overlay.overlay
                     width: parent.width
                     Material.theme: themeofapp==="Dark"? Material.Dark:Material.Light
@@ -216,7 +217,7 @@ Dialog {
                             Rectangle {
                                 id:rectabview1_plot
                                 width: parent.width-17
-                                height: app.width
+                                height: 250
                                 color: Material.background
                                 HorizontalHeaderView {
                                     id: horizontalHeader2_plot
@@ -254,24 +255,16 @@ Dialog {
                                         TableModelColumn { display: "yi" }
                                         function updatechart1_plot()
                                         {
-                                            myChart_plot.axisX.zoom = 1
-                                            myChart_plot.axisY.zoom = 1
-
-                                            myChart_plot.axisX.pan=0
-                                            myChart_plot.axisY.pan=0
-
-                                            scatterSerie1_plot.clear()
-                                            scatterSerie2_plot.clear()
                                             ///-------------------------
                                             xitableModel1_plot=tableModel1_plot.rows[0].xi
                                             yitableModel1_plot=tableModel1_plot.rows[1].yi
                                             ///----------------
-                                            /////myChart_plot.removeAllSeries();
-                                            /////var line = myChart_plot.createSeries(GraphsView.SeriesTypeLine, "y=f(x)", axisX_plot, axisY_plot);
-                                            ////var line0 = myChart_plot.createSeries(GraphsView.SeriesTypeLine, "y=0", axisX_plot, axisY_plot);
+                                            myChart_plot.removeAllSeries();
+                                            var line = myChart_plot.createSeries(ChartView.SeriesTypeLine, "y=f(x)", axisX_plot, axisY_plot);
+                                            var line0 = myChart_plot.createSeries(ChartView.SeriesTypeLine, "y=0", axisX_plot, axisY_plot);
 
-                                            /////line.color = Qt.rgba(Math.random(),Math.random(),Math.random(),1);
-                                            /////line.hovered.connect(function(point, state){ console.log(point); }); // connect onHovered signal to a function
+                                            line.color = Qt.rgba(Math.random(),Math.random(),Math.random(),1);
+                                            line.hovered.connect(function(point, state){ console.log(point); }); // connect onHovered signal to a function
 
                                             var maxxi_plot=parseFloat(tableModel1_plot.rows[0].xi);
                                             var maxyi_plot=parseFloat(tableModel1_plot.rows[0].yi);
@@ -291,10 +284,8 @@ Dialog {
                                                 if (tableModel1_plot.rows[i].xi!==0
                                                         && tableModel1_plot.rows[i].yi!==""
                                                         )
-                                                    scatterSerie1_plot.append(tableModel1_plot.rows[i].xi,tableModel1_plot.rows[i].yi)
-                                                    /////lineSeries1.append(tableModel1_plot.rows[i].xi,tableModel1_plot.rows[i].yi)
-                                                /////line0.append(tableModel1_plot.rows[i].xi,0)
-                                                scatterSerie2_plot.append(tableModel1_plot.rows[i].xi,0)
+                                                    line.append(tableModel1_plot.rows[i].xi,tableModel1_plot.rows[i].yi)
+                                                line0.append(tableModel1_plot.rows[i].xi,0)
                                             }
 
                                             axisX_plot.min = Math.floor(minixi_plot-Math.abs(0.1*minixi_plot));
@@ -361,55 +352,163 @@ Dialog {
                                 width: parent.width-rectabview1_plot.width
                                 height: rectabview1_plot.height
                                 color: Material.background
+                                // GraphsView {
+                                //     id: myChart_plot
+                                //     anchors.fill: parent
+                                //     antialiasing: true
+                                //     clip: true
+                                //     panStyle: GraphsView.PanStyle.Drag
+                                //     zoomStyle: GraphsView.ZoomStyle.Center
+                                //     LineSeries{
+                                //         id:scatterSerie1_plot
+                                //         axisX: axisX_plot
+                                //         axisY: axisY_plot
+                                //         name: "y=f(x)" ///"Scatter"
+                                //     }
+                                //     LineSeries{
+                                //         id:scatterSerie2_plot
+                                //         axisX: axisX_plot
+                                //         axisY: axisY_plot
+                                //         color: "red"
+                                //         name: "y=0" ///"Scatter"
 
-                                GraphsView {
+                                //     }
+                                //     axisX:ValueAxis {
+                                //         id: axisX_plot
+                                //         gridVisible: true
+                                //         titleText:  "x"
+                                //         /////tickInterval: 2
+                                //         onVisualMaxChanged: {
+                                //                 axisX_plot.tickInterval=(axisX_plot.visualMax-axisX_plot.visualMin)/5
+                                //         }
+                                //         // onVisualMinChanged: {
+                                //         //         axisX_plot.tickInterval=axisX_plot.tickInterval/2
+                                //         // }
+                                //     }
+                                //     axisY:ValueAxis {
+                                //         id: axisY_plot
+                                //         gridVisible: true
+                                //         titleText: "f(x)"
+                                //         subGridVisible: true
+                                //     }
+                                //     theme: GraphsTheme {
+                                //         colorScheme:  themeofapp==="Dark"? GraphsTheme.ColorScheme.Dark :GraphsTheme.ColorScheme.Light /////GraphsTheme.ColorScheme.Dark
+                                //         theme:  themeofapp==="Dark"? GraphsTheme.Theme.BlueSeries:GraphsTheme.Theme.BlueSeries /////GraphsTheme.Theme.QtGreen
+                                //         plotAreaBackgroundVisible: false
+                                //         backgroundVisible: false
+                                //         labelTextColor: "#AEAEAE"
+                                //         labelBackgroundVisible: true
+                                //         grid.mainColor: "#AEAEAE"
+                                //         grid.mainWidth: 1
+                                //     }
+                                // }
+                                ChartView {
                                     id: myChart_plot
-                                    anchors.fill: parent
-                                    antialiasing: true
                                     clip: true
-                                    panStyle: GraphsView.PanStyle.Drag
-                                    zoomStyle: GraphsView.ZoomStyle.Center
-                                    LineSeries{
+                                    margins.left: 0
+                                    margins.right: 0
+                                    margins.top: 0
+                                    margins.bottom: 0
+                                    ///title: " \u03B7 = f (T°C) "
+                                    width: parent.width
+                                    height: parent.height
+                                    antialiasing: true
+                                    animationOptions: ChartView.SeriesAnimations
+                                    ///legend.visible: false
+                                    theme: themeofapp=="Dark" ? ChartView.ChartThemeDark:ChartView.ChartThemeLight
+                                    /////theme: ChartView.ChartThemeDark
+                                    ScatterSeries{
                                         id:scatterSerie1_plot
                                         axisX: axisX_plot
                                         axisY: axisY_plot
+                                        markerSize: 30
                                         name: "y=f(x)" ///"Scatter"
+                                        ///brush: gui.chartBrush
+                                        markerShape: ScatterSeries.MarkerShapeRectangle
+                                        pointsVisible: true
                                     }
-                                    LineSeries{
-                                        id:scatterSerie2_plot
-                                        axisX: axisX_plot
-                                        axisY: axisY_plot
-                                        color: "red"
-                                        name: "y=0" ///"Scatter"
-
-                                    }
-                                    axisX:ValueAxis {
+                                    ValueAxis {
                                         id: axisX_plot
                                         gridVisible: true
                                         titleText:  "x"
-                                        /////tickInterval: 2
-                                        onVisualMaxChanged: {
-                                                axisX_plot.tickInterval=(axisX_plot.visualMax-axisX_plot.visualMin)/5
-                                        }
-                                        // onVisualMinChanged: {
-                                        //         axisX_plot.tickInterval=axisX_plot.tickInterval/2
-                                        // }
                                     }
-                                    axisY:ValueAxis {
+                                    ValueAxis {
                                         id: axisY_plot
                                         gridVisible: true
                                         titleText: "f(x)"
-                                        subGridVisible: true
                                     }
-                                    theme: GraphsTheme {
-                                        colorScheme:  themeofapp==="Dark"? GraphsTheme.ColorScheme.Dark :GraphsTheme.ColorScheme.Light /////GraphsTheme.ColorScheme.Dark
-                                        theme:  themeofapp==="Dark"? GraphsTheme.Theme.BlueSeries:GraphsTheme.Theme.BlueSeries /////GraphsTheme.Theme.QtGreen
-                                        plotAreaBackgroundVisible: false
-                                        backgroundVisible: false
-                                        labelTextColor: "#AEAEAE"
-                                        labelBackgroundVisible: true
-                                        grid.mainColor: "#AEAEAE"
-                                        grid.mainWidth: 1
+                                    PinchArea{
+                                        id: pa_plot
+                                        anchors.fill: parent
+                                        property real currentPinchScaleX: 1
+                                        property real currentPinchScaleY: 1
+                                        property real pinchStartX : 0
+                                        property real pinchStartY : 0
+
+                                        onPinchStarted: {
+                                            // Pinching has started. Record the initial center of the pinch
+                                            // so relative motions can be reversed in the pinchUpdated signal
+                                            // handler
+                                            pinchStartX = pinch.center.x;
+                                            pinchStartY = pinch.center.y;
+                                        }
+
+                                        onPinchUpdated: {
+                                            myChart_plot.zoomReset();
+
+                                            // Reverse pinch center motion direction
+                                            var center_x = pinchStartX + (pinchStartX - pinch.center.x);
+                                            var center_y = pinchStartY + (pinchStartY - pinch.center.y);
+
+                                            // Compound pinch.scale with prior pinch scale level and apply
+                                            // scale in the absolute direction of the pinch gesture
+                                            var scaleX = currentPinchScaleX * (1 + (pinch.scale - 1) * Math.abs(Math.cos(pinch.angle * Math.PI / 180)));
+                                            var scaleY = currentPinchScaleY * (1 + (pinch.scale - 1) * Math.abs(Math.sin(pinch.angle * Math.PI / 180)));
+
+                                            // Apply scale to zoom levels according to pinch angle
+                                            var width_zoom = height / scaleX;
+                                            var height_zoom = width / scaleY;
+
+                                            var r = Qt.rect(center_x - width_zoom / 2, center_y - height_zoom / 2, width_zoom, height_zoom);
+                                            myChart_plot.zoomIn(r);
+                                        }
+
+                                        onPinchFinished: {
+                                            // Pinch finished. Record compounded pinch scale.
+                                            currentPinchScaleX = currentPinchScaleX * (1 + (pinch.scale - 1) * Math.abs(Math.cos(pinch.angle * Math.PI / 180)));
+                                            currentPinchScaleY = currentPinchScaleY * (1 + (pinch.scale - 1) * Math.abs(Math.sin(pinch.angle * Math.PI / 180)));
+                                        }
+
+                                        MouseArea{
+                                            anchors.fill: parent
+                                            drag.target: dragTarget_plot
+                                            drag.axis: Drag.XAndYAxis
+
+                                            onDoubleClicked: {
+                                                myChart_plot.zoomReset();
+                                                parent.currentPinchScaleX = 1;
+                                                parent.currentPinchScaleY = 1;
+                                            }
+                                        }
+
+                                        Item {
+                                            // A virtual item to receive drag signals from the MouseArea.
+                                            // When x or y properties are changed by the MouseArea's
+                                            // drag signals, the ChartView is scrolled accordingly.
+                                            id: dragTarget_plot
+
+                                            property real oldX : x
+                                            property real oldY : y
+
+                                            onXChanged: {
+                                                myChart_plot.scrollLeft( x - oldX );
+                                                oldX = x;
+                                            }
+                                            onYChanged: {
+                                                myChart_plot.scrollUp( y - oldY );
+                                                oldY = y;
+                                            }
+                                        }
                                     }
                                 }
                             }
