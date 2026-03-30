@@ -47,7 +47,7 @@
 
     <launchable type="desktop-id">io.github.hafmed.Basic-Numerical-Methods-qml.desktop</launchable>
     <releases>
-        <release type="stable" version="1.7.9" date="2026-03-25">
+        <release type="stable" version="1.8.0" date="2026-04-01">
             <url type="details">https://sites.google.com/site/courshaf/</url>
             <description>
                 <p>Latest stable release.</p>
@@ -56,7 +56,7 @@
                 </ul>
             </description>
         </release>
-        <release type="stable" version="1.8.0" date="2026-04-01">
+        <release type="stable" version="1.7.9" date="2026-03-25">
             <url type="details">https://sites.google.com/site/courshaf/</url>
             <description>
                 <p>Latest stable release.</p>
