@@ -7,3 +7,6 @@ Categories=Education;Science;Utility;
 Icon=io.github.hafmed.Basic-Numerical-Methods-qml
 Exec=appbasic_numerical_methods_qml
 Terminal=false
+Keywords=Math;Mathematics;Numerical;Numerical Analysis;Root;Methods;Science;engineering;Calcul;C++;Qt;qml;
+X-Purism-FormFactor=Workstation;Mobile;
+X-KDE-FormFactor=desktop;tablet;handset;
