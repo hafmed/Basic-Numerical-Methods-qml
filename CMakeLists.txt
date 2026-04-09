@@ -12,7 +12,7 @@
 
 cmake_minimum_required(VERSION 3.16)
 
-project(basic_numerical_methods_qml VERSION 1.8.0 LANGUAGES CXX)
+project(basic_numerical_methods_qml VERSION 1.8.5 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
