@@ -5,6 +5,9 @@
     <summary>Didactic application to aid students in learning Numerical Methods;</summary>
     <metadata_license>CC0-1.0</metadata_license>
     <project_license>GPL-3.0-or-later</project_license>
+    <requires>
+      <display_length compare="ge">360</display_length>
+    </requires>
     <categories>
         <category>Education</category>
         <category>Utility</category>
@@ -15,6 +18,9 @@
         <keyword>Mathematics</keyword>
         <keyword>Numerical</keyword>
         <keyword>Methods</keyword>
+        <keyword>Science</keyword>
+        <keyword>engineering</keyword>
+        <keyword>C++</keyword>
         <keyword>Qt</keyword>
         <keyword>qml</keyword>
         <keyword>Calcul</keyword>
@@ -47,6 +53,15 @@
 
     <launchable type="desktop-id">io.github.hafmed.Basic-Numerical-Methods-qml.desktop</launchable>
     <releases>
+        <release type="stable" version="1.8.5" date="2026-04-10">
+            <url type="details">https://sites.google.com/site/courshaf/</url>
+            <description>
+                <p>Latest stable release.</p>
+                <ul>
+                    <li>Add "Bug resolved"</li>
+                </ul>
+            </description>
+        </release>
         <release type="stable" version="1.8.0" date="2026-04-01">
             <url type="details">https://sites.google.com/site/courshaf/</url>
             <description>
