@@ -27,12 +27,15 @@
         <keyword>qml</keyword>
         <keyword>Calcul</keyword>
     </keywords>
+    <branding>
+    <color type="primary" scheme_preference="light">#f6d32d</color>
+    <color type="primary" scheme_preference="dark">#9f72b3</color>
+    </branding>
     <supports>
         <control>pointing</control>
         <control>keyboard</control>
         <control>touch</control>
     </supports>
-
     <description>
         <p>
             A practical tool (for students and engineers) to foresee the result of calculus exercises. Calculation and visualization numerical methods for nonlinear equation, ODE, integration, linear system, nonlinear system, polynomial approximation, .....
@@ -52,9 +55,17 @@
             <li>English GUI.</li>
         </ul>
     </description>
-
     <launchable type="desktop-id">io.github.hafmed.Basic-Numerical-Methods-qml.desktop</launchable>
     <releases>
+        <release type="stable" version="1.8.7" date="2026-05-05">
+            <url type="details">https://sites.google.com/site/courshaf/</url>
+            <description>
+                <p>Latest stable release.</p>
+                <ul>
+                    <li>Add "Bug resolved"</li>
+                </ul>
+            </description>
+        </release>
         <release type="stable" version="1.8.5" date="2026-04-10">
             <url type="details">https://sites.google.com/site/courshaf/</url>
             <description>
