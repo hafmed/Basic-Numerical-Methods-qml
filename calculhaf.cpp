@@ -419,6 +419,7 @@ void CalculHaf::hafresolutioneqtnonlineaire_secante(QString fx, double x0, doubl
 
     double valsi[1];
     double valsimoisun[1];
+    double valsiplusun[1];
 
     i=0;
     double x[nmax];
@@ -463,6 +464,7 @@ void CalculHaf::hafresolutioneqtnonlineaire_secante(QString fx, double x0, doubl
     i=1;
     double valeurfxi;
     double valeurfximoisun;
+    double valeurfxiplusun;
     while (fabs(fparserfx.Eval(valsi))>eps && i<nmax && fparserfx_EvalError==0)
     {
         valsi[0]=x[i];
@@ -474,7 +476,10 @@ void CalculHaf::hafresolutioneqtnonlineaire_secante(QString fx, double x0, doubl
         fparserfx_EvalError=fparserfx.EvalError();
         EvalErrorfunHAF(fparserfx_EvalError,"f(x)",x[i],ndecimaux);
         x[i+1]=x[i]-valeurfxi*(x[i]-x[i-1])/(valeurfxi-valeurfximoisun);
-        emit requestXiSEC(i,x[i],valeurfxi);
+        valsiplusun[0]=x[i+1];
+        valeurfxiplusun=fparserfx.Eval(valsiplusun);
+        emit requestXiSEC(i+1,x[i+1],valeurfxiplusun);
+        valsi[0]=x[i+1];
         i=i+1;
     }
 
