@@ -151,7 +151,7 @@ Item {
 
 
     }
-    property string appVer:"1.8.7"
+    property string appVer:"1.9.1"
     ///property bool firstuseofapp
     /////--HAF 5-9-2025-----------------
     property string themeofapp: "Drak"
