@@ -57,6 +57,17 @@
     </description>
     <launchable type="desktop-id">io.github.hafmed.Basic-Numerical-Methods-qml.desktop</launchable>
     <releases>
+        <release type="stable" version="1.9.1" date="2026-09-01">
+            <url type="details">https://sites.google.com/site/courshaf/</url>
+            <description>
+                <p>Latest stable release.</p>
+                <ul>
+                    <li>Add "Bug fixes and improvements"</li>
+                    <li>Add "Dark and Light Supported"</li>
+                    <li>Use QtGraph instead of QtChart, which is deprecated in Qt6.</li>
+                </ul>
+            </description>
+        </release>
         <release type="stable" version="1.8.7" date="2026-05-05">
             <url type="details">https://sites.google.com/site/courshaf/</url>
             <description>
