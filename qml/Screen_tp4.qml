@@ -232,7 +232,7 @@ Rectangle {
                         }
                         RadioButton {
                             id:radiobuttonMetho2_linearsyst
-                            text: qsTr("Gauss-Siedel")
+                            text: qsTr("Gauss-Seidel")
                             ButtonGroup.group: buttongroup2_linearsyst
                             onCheckedChanged: radiobutton2ischecked_linearsyst=radiobuttonMetho2_linearsyst.checked
                         }
